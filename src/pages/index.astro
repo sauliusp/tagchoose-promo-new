@@ -4,120 +4,74 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CTAButton from '../components/CTAButton.astro';
 import { Image } from 'astro:assets';
-import productImage from '../assets/4.jpg';
+import mainImage from '../assets/4.jpg';
 ---
 
 <Layout>
   <Header />
-  
-  <main>
-    <!-- Hero Section -->
-    <section class="py-20 lg:py-32">
-      <div class="container mx-auto px-4 text-center">
-        <h1 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight font-serif">
-          Ditch the Folders.<br />
-          <span class="text-primary">Find Your Focus.</span>
-        </h1>
-        <p class="text-xl lg:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
-          The smart bookmark manager that works like your brain.
-        </p>
-        <CTAButton />
-      </div>
+  <main class="container mx-auto px-4 py-16 md:py-24 text-center">
+
+    <section class="max-w-3xl mx-auto">
+      <h1 class="text-4xl md:text-6xl font-serif font-bold text-text mb-4">
+        Your brain works in tags. So should your bookmarks.
+      </h1>
+      <p class="text-lg md:text-xl text-text/80 mb-8">
+        #TagChoose is an AI Bookmark Manager that does the thinking for you — without ever touching the cloud. No signup. No sync. Just your browser, your bookmarks, and a local AI working for you.
+      </p>
+      <CTAButton />
     </section>
 
-    <!-- Product Image Section -->
-    <section class="py-16">
-      <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto">
-          <Image 
-            src={productImage} 
-            alt="The #TagChoose interface showing a bookmark being tagged" 
-            class="w-full rounded-lg shadow-2xl border border-gray-700"
-            width={1200}
-            height={800}
-          />
-        </div>
-      </div>
+    <section class="my-16 md:my-24">
+      <Image 
+        src={mainImage} 
+        alt="The #TagChoose interface showing AI-suggested tags for a webpage."
+        class="rounded-lg shadow-xl mx-auto"
+      />
     </section>
 
-    <!-- Features Overview Section -->
-    <section class="py-20 bg-gray-900 bg-opacity-50">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl lg:text-5xl font-bold mb-6 font-serif">
-            Why <span class="text-primary">#TagChoose</span> Works
-          </h2>
-          <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-            Built for the way you actually think and organize information.
+    <section class="max-w-5xl mx-auto">
+      <h2 class="text-3xl md:text-5xl font-serif font-bold text-text mb-2">
+        Tag once. File everywhere.
+      </h2>
+      <h3 class="text-xl md:text-2xl font-serif text-primary mb-12">
+        Each Tag Becomes a Folder. No More Limits.
+      </h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+        <div class="bg-background/50 p-6 rounded-lg">
+          <h4 class="text-xl font-bold text-text mb-2">1. Save a Webpage</h4>
+          <p class="text-text/80">
+            When you find a webpage you want to save, just click the #TagChoose icon. The extension will grab the page title and get ready for the next step.
           </p>
         </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <!-- Feature 1 -->
-          <div class="text-center p-8 rounded-lg bg-background bg-opacity-50 border border-gray-700">
-            <div class="w-16 h-16 bg-primary bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-6">
-              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
-              </svg>
-            </div>
-            <h3 class="text-2xl font-bold mb-4 text-primary">Tag Anything</h3>
-            <p class="text-gray-300">Don't just save links. Save text snippets and images too. Use flexible tags to categorize information the way your brain works.</p>
-          </div>
-
-          <!-- Feature 2 -->
-          <div class="text-center p-8 rounded-lg bg-background bg-opacity-50 border border-gray-700">
-            <div class="w-16 h-16 bg-primary bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-6">
-              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-              </svg>
-            </div>
-            <h3 class="text-2xl font-bold mb-4 text-primary">Search Instantly</h3>
-            <p class="text-gray-300">Forget digging through folders. Our blazing-fast search lets you combine tags to find exactly what you need in seconds.</p>
-          </div>
-
-          <!-- Feature 3 -->
-          <div class="text-center p-8 rounded-lg bg-background bg-opacity-50 border border-gray-700">
-            <div class="w-16 h-16 bg-primary bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-6">
-              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-              </svg>
-            </div>
-            <h3 class="text-2xl font-bold mb-4 text-primary">100% Private</h3>
-            <p class="text-gray-300">Your data is yours alone. Everything is stored locally in your browser, not on our servers. No accounts, no tracking.</p>
-          </div>
+        <div class="bg-background/50 p-6 rounded-lg">
+          <h4 class="text-xl font-bold text-text mb-2">2. Get AI Tag Suggestions</h4>
+          <p class="text-text/80">
+            Our local AI suggests relevant tags for you. Think of these as instant, smart folder suggestions. Accept them, edit them, or add your own.
+          </p>
+        </div>
+        <div class="bg-background/50 p-6 rounded-lg">
+          <h4 class="text-xl font-bold text-text mb-2">3. Find It Everywhere</h4>
+          <p class="text-text/80">
+            Each tag you assign instantly creates a corresponding Chrome folder. Tag a page with '#ai' and '#research', and it will appear in both folders at once. It's filing without limits.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- Social Proof Section -->
-    <section class="py-20">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl lg:text-4xl font-bold text-center mb-12">
-          Loved by <span class="text-primary">Knowledge Workers</span>
-        </h2>
-        
-        <div class="max-w-4xl mx-auto">
-          <div class="grid md:grid-cols-2 gap-8">
-            <!-- Testimonial 1 -->
-            <div class="p-8 rounded-lg bg-gray-900 bg-opacity-50 border border-gray-700">
-              <blockquote class="text-gray-300 text-lg mb-6 italic">
-                "I had thousands of bookmarks in a messy folder system. #TagChoose helped me finally find what I was looking for. A total game-changer for my research!"
-              </blockquote>
-              <cite class="text-primary font-semibold">- A Happy User</cite>
-            </div>
-
-            <!-- Testimonial 2 -->
-            <div class="p-8 rounded-lg bg-gray-900 bg-opacity-50 border border-gray-700">
-              <blockquote class="text-gray-300 text-lg mb-6 italic">
-                "The best part is the privacy. Knowing my data isn't being uploaded somewhere gives me total peace of mind. The search is incredibly fast too."
-              </blockquote>
-              <cite class="text-primary font-semibold">- A Secure User</cite>
-            </div>
-          </div>
-        </div>
+    <section class="max-w-3xl mx-auto my-16 md:my-24">
+       <h2 class="text-3xl md:text-5xl font-serif font-bold text-text mb-8">
+        Built for Performance and Privacy
+      </h2>
+      <div class="space-y-8">
+        <blockquote class="text-xl italic text-text/90 border-l-4 border-primary pl-4">
+          "It's not magic — it's client-side AI doing all the heavy lifting. This means incredible performance with no privacy trade-offs."
+        </blockquote>
+        <blockquote class="text-xl italic text-text/90 border-l-4 border-primary pl-4">
+          "The extension works even without an internet connection. It's fast, it's private, and it's built to work for you."
+        </blockquote>
       </div>
     </section>
+
   </main>
-
   <Footer />
 </Layout>
