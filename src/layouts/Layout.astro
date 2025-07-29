@@ -1,12 +1,14 @@
 ---
+import { SITE } from '../config';
+
 export interface Props {
   title?: string;
   description?: string;
 }
 
 const { 
-  title = "#TagChoose - The Smart Bookmark Manager",
-  description = "The smart way to organize your digital life. Save links, text, and images with flexible tags, now enhanced with AI-powered suggestions. Ditch your folders and find your focus."
+  title = SITE.title,
+  description = SITE.description
 } = Astro.props;
 ---
 
