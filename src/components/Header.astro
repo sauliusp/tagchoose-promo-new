@@ -1,0 +1,33 @@
+---
+import CTAButton from './CTAButton.astro';
+---
+
+<header class="sticky top-0 bg-background border-b border-gray-800 z-50">
+  <div class="container mx-auto px-4 py-4">
+    <div class="flex items-center justify-between">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <h1 class="text-2xl font-bold text-primary">#TagChoose</h1>
+      </div>
+      
+      <!-- Navigation -->
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="/features" class="text-text hover:text-primary transition-colors duration-200">Features</a>
+        <a href="/manifesto" class="text-text hover:text-primary transition-colors duration-200">Manifesto</a>
+        <a href="/blog" class="text-text hover:text-primary transition-colors duration-200">Blog</a>
+      </nav>
+      
+      <!-- CTA Button -->
+      <div class="flex items-center">
+        <CTAButton />
+      </div>
+      
+      <!-- Mobile Menu Button -->
+      <button class="md:hidden text-text">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>

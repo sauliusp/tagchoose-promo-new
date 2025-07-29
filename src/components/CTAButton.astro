@@ -1,0 +1,43 @@
+---
+// src/components/CTAButton.astro
+const gwsLink = 'https://chromewebstore.google.com/detail/tagchoose-bookmark-manage/hlfgdfpeekcelanebbfchnnneijhophh';
+const uniqueId = `mobile-cta-button-${Math.random().toString(36).substr(2, 9)}`;
+---
+
+<div class="flex items-center justify-center">
+  <a
+    href={gwsLink}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="hidden md:inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-background bg-primary rounded-lg hover:bg-opacity-90 focus:ring-4 focus:ring-primary"
+  >
+    Add to Chrome - It's Free
+  </a>
+
+  <button
+    id={uniqueId}
+    class="block md:hidden items-center justify-center px-5 py-3 text-base font-medium text-center text-background bg-primary rounded-lg hover:bg-opacity-90 focus:ring-4 focus:ring-primary"
+  >
+    Save Link for Desktop
+  </button>
+</div>
+
+<script define:vars={{ gwsLink, uniqueId }}>
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileButton = document.getElementById(uniqueId);
+    if (mobileButton) {
+      const originalText = mobileButton.textContent;
+
+      mobileButton.addEventListener('click', () => {
+        navigator.clipboard.writeText(gwsLink).then(() => {
+          mobileButton.textContent = 'Copied!';
+          setTimeout(() => {
+            mobileButton.textContent = originalText;
+          }, 2000);
+        }).catch(err => {
+          console.error('Failed to copy text: ', err);
+        });
+      });
+    }
+  });
+</script>

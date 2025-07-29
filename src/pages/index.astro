@@ -1,0 +1,120 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CTAButton from '../components/CTAButton.astro';
+---
+
+<Layout>
+  <Header />
+  
+  <main>
+    <!-- Hero Section -->
+    <section class="py-20 lg:py-32">
+      <div class="container mx-auto px-4 text-center">
+        <h1 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight font-serif">
+          Ditch the Folders.<br />
+          <span class="text-primary">Find Your Focus.</span>
+        </h1>
+        <p class="text-xl lg:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+          The smart bookmark manager that works like your brain.
+        </p>
+        <CTAButton />
+      </div>
+    </section>
+
+    <!-- Features Overview Section -->
+    <section class="py-20 bg-gray-900 bg-opacity-50">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Feature 1 -->
+          <div class="text-center p-8 rounded-lg bg-background bg-opacity-50 border border-gray-700">
+            <div class="w-16 h-16 bg-primary bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold mb-4 text-primary">Tag Anything</h3>
+            <p class="text-gray-300">Save links, text snippets, and images with flexible tags that make sense to you.</p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="text-center p-8 rounded-lg bg-background bg-opacity-50 border border-gray-700">
+            <div class="w-16 h-16 bg-primary bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold mb-4 text-primary">Search Instantly</h3>
+            <p class="text-gray-300">Find exactly what you need with lightning-fast search across all your saved content.</p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="text-center p-8 rounded-lg bg-background bg-opacity-50 border border-gray-700">
+            <div class="w-16 h-16 bg-primary bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold mb-4 text-primary">100% Private</h3>
+            <p class="text-gray-300">Your data stays on your device. No cloud syncing, no tracking, complete privacy.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="py-20">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl lg:text-4xl font-bold text-center mb-12">
+          Loved by <span class="text-primary">Knowledge Workers</span>
+        </h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Testimonial 1 -->
+          <div class="p-6 rounded-lg bg-gray-900 bg-opacity-50 border border-gray-700">
+            <p class="text-gray-300 mb-4">"Finally, a bookmark manager that thinks like I do. Tags are so much more flexible than folders."</p>
+            <div class="flex items-center">
+              <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center mr-3">
+                <span class="text-background font-bold">SM</span>
+              </div>
+              <div>
+                <p class="font-semibold">Sarah M.</p>
+                <p class="text-sm text-gray-400">Product Designer</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="p-6 rounded-lg bg-gray-900 bg-opacity-50 border border-gray-700">
+            <p class="text-gray-300 mb-4">"The search is incredibly fast. I can find any link I saved months ago in seconds."</p>
+            <div class="flex items-center">
+              <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center mr-3">
+                <span class="text-background font-bold">DJ</span>
+              </div>
+              <div>
+                <p class="font-semibold">David J.</p>
+                <p class="text-sm text-gray-400">Software Engineer</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="p-6 rounded-lg bg-gray-900 bg-opacity-50 border border-gray-700 md:col-span-2 lg:col-span-1">
+            <p class="text-gray-300 mb-4">"Privacy-focused and lightning fast. This is how bookmarking should work in 2025."</p>
+            <div class="flex items-center">
+              <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center mr-3">
+                <span class="text-background font-bold">AL</span>
+              </div>
+              <div>
+                <p class="font-semibold">Alex L.</p>
+                <p class="text-sm text-gray-400">Content Creator</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
