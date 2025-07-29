@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CTAButton from '../components/CTAButton.astro';
+import { Image } from 'astro:assets';
+import productImage from '../assets/4.jpg';
 ---
 
 <Layout>
@@ -23,10 +25,34 @@ import CTAButton from '../components/CTAButton.astro';
       </div>
     </section>
 
+    <!-- Product Image Section -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <Image 
+            src={productImage} 
+            alt="The #TagChoose interface showing a bookmark being tagged" 
+            class="w-full rounded-lg shadow-2xl border border-gray-700"
+            width={1200}
+            height={800}
+          />
+        </div>
+      </div>
+    </section>
+
     <!-- Features Overview Section -->
     <section class="py-20 bg-gray-900 bg-opacity-50">
       <div class="container mx-auto px-4">
-        <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl lg:text-5xl font-bold mb-6 font-serif">
+            Why <span class="text-primary">#TagChoose</span> Works
+          </h2>
+          <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+            Built for the way you actually think and organize information.
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <!-- Feature 1 -->
           <div class="text-center p-8 rounded-lg bg-background bg-opacity-50 border border-gray-700">
             <div class="w-16 h-16 bg-primary bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -35,7 +61,7 @@ import CTAButton from '../components/CTAButton.astro';
               </svg>
             </div>
             <h3 class="text-2xl font-bold mb-4 text-primary">Tag Anything</h3>
-            <p class="text-gray-300">Save links, text snippets, and images with flexible tags that make sense to you.</p>
+            <p class="text-gray-300">Don't just save links. Save text snippets and images too. Use flexible tags to categorize information the way your brain works.</p>
           </div>
 
           <!-- Feature 2 -->
@@ -46,7 +72,7 @@ import CTAButton from '../components/CTAButton.astro';
               </svg>
             </div>
             <h3 class="text-2xl font-bold mb-4 text-primary">Search Instantly</h3>
-            <p class="text-gray-300">Find exactly what you need with lightning-fast search across all your saved content.</p>
+            <p class="text-gray-300">Forget digging through folders. Our blazing-fast search lets you combine tags to find exactly what you need in seconds.</p>
           </div>
 
           <!-- Feature 3 -->
@@ -57,7 +83,7 @@ import CTAButton from '../components/CTAButton.astro';
               </svg>
             </div>
             <h3 class="text-2xl font-bold mb-4 text-primary">100% Private</h3>
-            <p class="text-gray-300">Your data stays on your device. No cloud syncing, no tracking, complete privacy.</p>
+            <p class="text-gray-300">Your data is yours alone. Everything is stored locally in your browser, not on our servers. No accounts, no tracking.</p>
           </div>
         </div>
       </div>
@@ -69,46 +95,23 @@ import CTAButton from '../components/CTAButton.astro';
         <h2 class="text-3xl lg:text-4xl font-bold text-center mb-12">
           Loved by <span class="text-primary">Knowledge Workers</span>
         </h2>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Testimonial 1 -->
-          <div class="p-6 rounded-lg bg-gray-900 bg-opacity-50 border border-gray-700">
-            <p class="text-gray-300 mb-4">"Finally, a bookmark manager that thinks like I do. Tags are so much more flexible than folders."</p>
-            <div class="flex items-center">
-              <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center mr-3">
-                <span class="text-background font-bold">SM</span>
-              </div>
-              <div>
-                <p class="font-semibold">Sarah M.</p>
-                <p class="text-sm text-gray-400">Product Designer</p>
-              </div>
+        
+        <div class="max-w-4xl mx-auto">
+          <div class="grid md:grid-cols-2 gap-8">
+            <!-- Testimonial 1 -->
+            <div class="p-8 rounded-lg bg-gray-900 bg-opacity-50 border border-gray-700">
+              <blockquote class="text-gray-300 text-lg mb-6 italic">
+                "I had thousands of bookmarks in a messy folder system. #TagChoose helped me finally find what I was looking for. A total game-changer for my research!"
+              </blockquote>
+              <cite class="text-primary font-semibold">- A Happy User</cite>
             </div>
-          </div>
 
-          <!-- Testimonial 2 -->
-          <div class="p-6 rounded-lg bg-gray-900 bg-opacity-50 border border-gray-700">
-            <p class="text-gray-300 mb-4">"The search is incredibly fast. I can find any link I saved months ago in seconds."</p>
-            <div class="flex items-center">
-              <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center mr-3">
-                <span class="text-background font-bold">DJ</span>
-              </div>
-              <div>
-                <p class="font-semibold">David J.</p>
-                <p class="text-sm text-gray-400">Software Engineer</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Testimonial 3 -->
-          <div class="p-6 rounded-lg bg-gray-900 bg-opacity-50 border border-gray-700 md:col-span-2 lg:col-span-1">
-            <p class="text-gray-300 mb-4">"Privacy-focused and lightning fast. This is how bookmarking should work in 2025."</p>
-            <div class="flex items-center">
-              <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center mr-3">
-                <span class="text-background font-bold">AL</span>
-              </div>
-              <div>
-                <p class="font-semibold">Alex L.</p>
-                <p class="text-sm text-gray-400">Content Creator</p>
-              </div>
+            <!-- Testimonial 2 -->
+            <div class="p-8 rounded-lg bg-gray-900 bg-opacity-50 border border-gray-700">
+              <blockquote class="text-gray-300 text-lg mb-6 italic">
+                "The best part is the privacy. Knowing my data isn't being uploaded somewhere gives me total peace of mind. The search is incredibly fast too."
+              </blockquote>
+              <cite class="text-primary font-semibold">- A Secure User</cite>
             </div>
           </div>
         </div>
