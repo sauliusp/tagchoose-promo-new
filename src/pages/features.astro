@@ -2,113 +2,62 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { Image } from 'astro:assets';
+
+// Import the feature images
+import imageProblem from '../assets/2.jpg'; // Folders with "?"
+import imageAI from '../assets/1.jpg';       // Local AI
+import imagePhilosophy from '../assets/3.jpg'; // Brain works in tags
 ---
 
-<Layout title="#TagChoose Features - Every Feature, Designed for Flow">
+<Layout title="Features - #TagChoose" description="Explore the powerful features of #TagChoose, the smart bookmark manager that uses local AI and a tag-based system to help you find anything.">
   <Header />
-  
-  <main>
-    <section class="py-20 lg:py-32">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-16">
-          <h1 class="text-5xl lg:text-6xl font-bold mb-6 font-serif">
-            Every Feature, <span class="text-primary">Designed for Flow</span>
-          </h1>
-          <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-            #TagChoose is built for the way you actually think and work. No more rigid folder structures—just intuitive organization that adapts to your mind.
-          </p>
-        </div>
+  <main class="container mx-auto px-4 py-16 md:py-24">
+    <div class="text-center max-w-3xl mx-auto">
+      <h1 class="text-4xl md:text-6xl font-serif font-bold text-text mb-4">
+        Every Feature, Designed for Flow
+      </h1>
+      <p class="text-lg md:text-xl text-text/80">
+        #TagChoose isn't just another bookmarking tool. It's a fundamental rethinking of how we save and rediscover information, built for privacy and speed.
+      </p>
+    </div>
 
-        <div class="grid lg:grid-cols-2 gap-12 items-center mb-20">
-          <div>
-            <h2 class="text-3xl font-bold mb-6 text-primary">Smart Tagging System</h2>
-            <p class="text-gray-300 text-lg mb-6">
-              Tag your bookmarks with multiple labels that reflect how you actually think about content. No more choosing between "work" or "design"—use both, plus any other tags that make sense.
-            </p>
-            <ul class="space-y-3 text-gray-300">
-              <li class="flex items-center">
-                <svg class="w-5 h-5 text-primary mr-3" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                Multiple tags per bookmark
-              </li>
-              <li class="flex items-center">
-                <svg class="w-5 h-5 text-primary mr-3" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                Auto-complete suggestions
-              </li>
-              <li class="flex items-center">
-                <svg class="w-5 h-5 text-primary mr-3" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                Color-coded organization
-              </li>
-            </ul>
-          </div>
-          <div class="bg-gray-900 bg-opacity-50 p-8 rounded-lg border border-gray-700">
-            <div class="text-sm text-gray-400 mb-2">Example bookmark:</div>
-            <div class="bg-background p-4 rounded border border-gray-600">
-              <p class="text-text font-medium mb-2">Advanced CSS Grid Techniques</p>
-              <div class="flex flex-wrap gap-2">
-                <span class="bg-primary bg-opacity-20 text-primary px-2 py-1 rounded text-sm">css</span>
-                <span class="bg-primary bg-opacity-20 text-primary px-2 py-1 rounded text-sm">grid</span>
-                <span class="bg-primary bg-opacity-20 text-primary px-2 py-1 rounded text-sm">tutorial</span>
-                <span class="bg-primary bg-opacity-20 text-primary px-2 py-1 rounded text-sm">webdev</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
-          <div class="order-2 lg:order-1">
-            <div class="bg-gray-900 bg-opacity-50 p-8 rounded-lg border border-gray-700">
-              <div class="text-sm text-gray-400 mb-4">Search example:</div>
-              <div class="bg-background p-4 rounded border border-gray-600 mb-4">
-                <input type="text" placeholder="css grid responsive" class="w-full bg-transparent text-text outline-none" readonly />
-              </div>
-              <div class="space-y-2">
-                <div class="bg-background bg-opacity-50 p-3 rounded border border-gray-600">
-                  <p class="text-sm text-text">CSS Grid Layout Patterns</p>
-                  <p class="text-xs text-gray-400">Matches: css, grid</p>
-                </div>
-                <div class="bg-background bg-opacity-50 p-3 rounded border border-gray-600">
-                  <p class="text-sm text-text">Responsive Design with Grid</p>
-                  <p class="text-xs text-gray-400">Matches: grid, responsive</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="order-1 lg:order-2">
-            <h2 class="text-3xl font-bold mb-6 text-primary">Lightning-Fast Search</h2>
-            <p class="text-gray-300 text-lg mb-6">
-              Find any bookmark instantly with our powerful search that understands tags, titles, and content. Search across everything you've saved in milliseconds.
-            </p>
-            <ul class="space-y-3 text-gray-300">
-              <li class="flex items-center">
-                <svg class="w-5 h-5 text-primary mr-3" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                Search by tags, titles, or content
-              </li>
-              <li class="flex items-center">
-                <svg class="w-5 h-5 text-primary mr-3" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                Instant results as you type
-              </li>
-              <li class="flex items-center">
-                <svg class="w-5 h-5 text-primary mr-3" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                Fuzzy matching for typos
-              </li>
-            </ul>
-          </div>
-        </div>
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center my-16 md:my-24">
+      <div class="text-left">
+        <h2 class="text-3xl font-serif font-bold text-primary mb-4">Break Free From Rigid Folders</h2>
+        <p class="text-text/80 text-lg">
+          The traditional folder system forces you to make a choice: does this article go in 'AI' or 'Startups'? With #TagChoose, you don't have to choose. Our tag-based system lets you file a single webpage in multiple places at once, just like your brain connects ideas.
+        </p>
+      </div>
+      <div>
+        <Image src={imageProblem} alt="Illustration showing the confusion of traditional bookmark folders." class="rounded-lg shadow-xl" />
       </div>
     </section>
-  </main>
 
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center my-16 md:my-24">
+      <div class="order-last md:order-first">
+        <Image src={imageAI} alt="Illustration highlighting the local AI and privacy features of #TagChoose." class="rounded-lg shadow-xl" />
+      </div>
+      <div class="text-left">
+        <h2 class="text-3xl font-serif font-bold text-primary mb-4">AI Suggestions, Zero Compromises</h2>
+        <p class="text-text/80 text-lg">
+          Our extension uses a powerful AI model that runs entirely inside your browser. It suggests relevant tags for you without ever sending your data to the cloud. You get smart suggestions with absolute privacy and performance, even when you're offline.
+        </p>
+      </div>
+    </section>
+    
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center my-16 md:my-24">
+      <div class="text-left">
+        <h2 class="text-3xl font-serif font-bold text-primary mb-4">Organize The Way You Think</h2>
+        <p class="text-text/80 text-lg">
+          Human memory is associative, not hierarchical. #TagChoose is built on this principle. By connecting information with multiple tags, you create a personal knowledge web that mirrors your own thought process, making rediscovery intuitive and instant.
+        </p>
+      </div>
+      <div>
+        <Image src={imagePhilosophy} alt="Illustration stating that your brain works in tags." class="rounded-lg shadow-xl" />
+      </div>
+    </section>
+
+  </main>
   <Footer />
 </Layout>
