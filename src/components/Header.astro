@@ -1,4 +1,7 @@
 ---
+---
+import { Image } from 'astro:assets';
+import logoImage from '../assets/logo.png';
 import CTAButton from './CTAButton.astro';
 ---
 
@@ -7,7 +10,15 @@ import CTAButton from './CTAButton.astro';
     <div class="flex items-center justify-between">
       <!-- Logo -->
       <div class="flex items-center">
-        <h1 class="text-2xl font-bold text-primary">#TagChoose</h1>
+        <a href="/" class="flex items-center hover:opacity-80 transition-opacity duration-200">
+          <Image 
+            src={logoImage} 
+            alt="#TagChoose Logo" 
+            width={120} 
+            height={40}
+            class="h-8 w-auto"
+          />
+        </a>
       </div>
       
       <!-- Navigation -->
