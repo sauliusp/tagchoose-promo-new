@@ -3,79 +3,72 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CTAButton from '../components/CTAButton.astro';
+import { Image } from 'astro:assets';
+
+// Import the hero image for this page
+import heroImage from '../assets/0.jpg'; // Assuming 0.jpg is in src/assets
 ---
 
-<Layout title="#TagChoose Manifesto - Our Beliefs on Information Overload">
+<Layout 
+  title="The Manifesto - #TagChoose" 
+  description="Our beliefs on information overload, privacy, and building a bookmark manager that works like your brain, not a filing cabinet."
+>
   <Header />
-  
-  <main>
-    <section class="py-20 lg:py-32">
-      <div class="container mx-auto px-4 max-w-4xl">
-        <div class="text-center mb-16">
-          <h1 class="text-5xl lg:text-6xl font-bold mb-6 font-serif">
-            Our Beliefs on <span class="text-primary">Information Overload</span>
-          </h1>
-          <p class="text-xl text-gray-300">
-            The way we organize information should mirror how our minds actually work—not how computers think we should work.
-          </p>
-        </div>
+  <main class="container mx-auto px-4 py-16 md:py-24">
+    <div class="max-w-3xl mx-auto">
 
-        <div class="prose prose-lg prose-invert max-w-none">
-          <div class="bg-gray-900 bg-opacity-50 p-8 rounded-lg border border-gray-700 mb-12">
-            <h2 class="text-2xl font-bold text-primary mb-4">The Problem with Folders</h2>
-            <p class="text-gray-300 mb-4">
-              For decades, we've been forced to organize our digital lives using rigid folder hierarchies—a system designed for filing cabinets, not human brains. When you save a link about "CSS Grid layouts for responsive design," where does it go?
-            </p>
-            <ul class="text-gray-300 space-y-2">
-              <li>• Web Development → CSS → Grid?</li>
-              <li>• Design → Responsive → Techniques?</li>
-              <li>• Tutorials → Frontend → Advanced?</li>
-            </ul>
-            <p class="text-gray-300 mt-4">
-              Every choice excludes other valid ways to categorize that same piece of information. Folders force artificial boundaries on naturally interconnected knowledge.
-            </p>
-          </div>
-
-          <div class="bg-gray-900 bg-opacity-50 p-8 rounded-lg border border-gray-700 mb-12">
-            <h2 class="text-2xl font-bold text-primary mb-4">How Your Brain Actually Works</h2>
-            <p class="text-gray-300 mb-4">
-              Your mind doesn't store memories in folders. Instead, it creates rich networks of associations. A single piece of information connects to multiple concepts simultaneously. When you remember something, you follow these associative pathways.
-            </p>
-            <p class="text-gray-300">
-              Tags mirror this natural process. That CSS Grid article can simultaneously be tagged as <span class="bg-primary bg-opacity-20 text-primary px-2 py-1 rounded">css</span>, <span class="bg-primary bg-opacity-20 text-primary px-2 py-1 rounded">grid</span>, <span class="bg-primary bg-opacity-20 text-primary px-2 py-1 rounded">responsive</span>, <span class="bg-primary bg-opacity-20 text-primary px-2 py-1 rounded">tutorial</span>, and <span class="bg-primary bg-opacity-20 text-primary px-2 py-1 rounded">advanced</span>—because it genuinely relates to all these concepts.
-            </p>
-          </div>
-
-          <div class="bg-gray-900 bg-opacity-50 p-8 rounded-lg border border-gray-700 mb-12">
-            <h2 class="text-2xl font-bold text-primary mb-4">The Privacy Imperative</h2>
-            <p class="text-gray-300 mb-4">
-              Your bookmarks, notes, and saved content form an intimate map of your interests, research, and thinking patterns. This data should never leave your device.
-            </p>
-            <p class="text-gray-300">
-              #TagChoose processes everything locally. No cloud servers, no data harvesting, no "anonymized" analytics. Your information architecture remains entirely under your control, where it belongs.
-            </p>
-          </div>
-
-          <div class="bg-gray-900 bg-opacity-50 p-8 rounded-lg border border-gray-700">
-            <h2 class="text-2xl font-bold text-primary mb-4">Speed as a Feature</h2>
-            <p class="text-gray-300 mb-4">
-              When tools are slow, we adapt our behavior to accommodate their limitations. We save fewer things, search less frequently, and gradually lose touch with our collected knowledge.
-            </p>
-            <p class="text-gray-300">
-              Fast tools encourage exploration and experimentation. When finding information is instant, you're more likely to capture interesting links, build connections between ideas, and actually use what you've saved.
-            </p>
-          </div>
-        </div>
-
-        <div class="text-center mt-16">
-          <p class="text-xl text-gray-300 mb-8">
-            Ready to organize information the way your brain actually works?
-          </p>
-          <CTAButton />
-        </div>
+      <div class="text-center mb-12">
+        <h1 class="text-4xl md:text-6xl font-serif font-bold text-text mb-4">
+          Our Beliefs on Information Overload
+        </h1>
+        <p class="text-lg md:text-xl text-primary">
+          Finding a link you saved should be faster than Googling it again.
+        </p>
       </div>
-    </section>
-  </main>
+      
+      <div class="my-12 md:my-16">
+        <Image 
+          src={heroImage} 
+          alt="A visual representation of an interconnected neural network, symbolizing the philosophy behind #TagChoose."
+          class="rounded-lg shadow-xl mx-auto"
+        />
+      </div>
 
+      <div class="prose prose-invert prose-lg max-w-none mb-12">
+        <h2 class="font-serif text-3xl text-text">The Problem: Bookmark Anxiety is Real</h2>
+        <p>
+          I built #TagChoose to solve my own problem. My bookmark list was a digital graveyard. When I needed a link I'd saved weeks ago, it was often faster to just re-Google it than to dig through dozens of poorly organized folders. I tried being more thoughtful about where to save things, but that just added friction and slowed me down. The traditional, hierarchical folder system simply isn't built for the way our minds work.
+        </p>
+      </div>
+
+      <div class="prose prose-invert prose-lg max-w-none mb-12">
+        <h2 class="font-serif text-3xl text-text">The Philosophy: Think in Parallels, Not Hierarchies</h2>
+        <p>
+          #TagChoose is built on a simple premise: we should file things the way we think. Our brains connect ideas associatively, in parallel. A single idea can relate to technology, startups, AND productivity all at once. That's why we use tags. By allowing a single bookmark to exist in multiple "folders" (tags) simultaneously, you create a personal knowledge web that's intuitive to search and effortless to organize.
+        </p>
+      </div>
+
+      <div class="prose prose-invert prose-lg max-w-none">
+        <h2 class="font-serif text-3xl text-text">Our Guiding Principles</h2>
+        <h3 class="font-serif text-2xl text-primary mt-8">1. Your Data is Yours. Period.</h3>
+        <p>
+          This is our most important promise. #TagChoose is private by design. It uses an on-device AI model, which means your Browse data, your bookmarks, and your tags never leave your computer. There are no accounts, no cloud sync, and zero data sent to external servers.
+        </p>
+        <h3 class="font-serif text-2xl text-primary mt-8">2. Software Should Respect Your Flow.</h3>
+        <p>
+          Productivity tools should be fast and get out of your way. We designed #TagChoose with a keyboard-first user experience. A simple shortcut opens the extension, the AI gives you a head start with suggestions, and a quick 'Enter' saves the bookmark. It's built to be a seamless part of your workflow, not an interruption.
+        </p>
+         <h3 class="font-serif text-2xl text-primary mt-8">3. You Are Always in Control.</h3>
+        <p>
+          AI should assist, not dictate. Our extension suggests tags to help you, but you always have the final say. You can edit the bookmark title, accept the AI's suggestions, or choose your own tags from your list of existing folders. The power is always yours.
+        </p>
+      </div>
+      
+      <div class="text-center mt-16">
+        <CTAButton />
+      </div>
+
+    </div>
+  </main>
   <Footer />
 </Layout>
