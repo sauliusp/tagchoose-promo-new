@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CTAButton from '../components/CTAButton.astro';
+import WhoBenefits from '../components/WhoBenefits.astro';
 import { Image } from 'astro:assets';
 
 // Import the hero image for this page
@@ -74,17 +75,7 @@ import heroImage from '../assets/0.jpg'; // Using the new PNG image
       </div>
     </section>
 
-    <section class="max-w-3xl mx-auto my-16 md:my-24 text-center">
-      <h2 class="text-3xl md:text-5xl font-serif font-bold text-text mb-8">
-        Who Benefits Most?
-      </h2>
-      <div class="flex flex-wrap justify-center gap-4">
-        <span class="bg-primary/20 text-primary font-semibold px-4 py-2 rounded-full">Researchers</span>
-        <span class="bg-primary/20 text-primary font-semibold px-4 py-2 rounded-full">Professionals</span>
-        <span class="bg-primary/20 text-primary font-semibold px-4 py-2 rounded-full">Students</span>
-        <span class="bg-primary/20 text-primary font-semibold px-4 py-2 rounded-full">Productivity Enthusiasts</span>
-      </div>
-    </section>
+    <WhoBenefits />
     
     <div class="text-center mt-16">
       <CTAButton />
