@@ -15,59 +15,79 @@ import heroImage from '../assets/0.jpg'; // Using the new PNG image
 >
   <Header />
   <main class="container mx-auto px-4 py-16 md:py-24">
-    <div class="max-w-3xl mx-auto">
+    <div class="text-center max-w-3xl mx-auto">
+      <h1 class="text-4xl md:text-6xl font-serif font-bold text-text mb-4">
+        Our Beliefs on Information Overload
+      </h1>
+      <p class="text-lg md:text-xl text-primary">
+        Finding a link you saved should be faster than Googling it again.
+      </p>
+    </div>
+    
+    <div class="my-12 md:my-16">
+      <Image 
+        src={heroImage} 
+        alt="A visual representation of an interconnected neural network, symbolizing the philosophy behind #TagChoose."
+        class="rounded-lg shadow-xl mx-auto max-w-3xl"
+      />
+    </div>
 
-      <div class="text-center mb-12">
-        <h1 class="text-4xl md:text-6xl font-serif font-bold text-text mb-4">
-          Our Beliefs on Information Overload
-        </h1>
-        <p class="text-lg md:text-xl text-primary">
-          Finding a link you saved should be faster than Googling it again.
-        </p>
-      </div>
-      
-      <div class="my-12 md:my-16">
-        <Image 
-          src={heroImage} 
-          alt="A visual representation of an interconnected neural network, symbolizing the philosophy behind #TagChoose."
-          class="rounded-lg shadow-xl mx-auto"
-        />
-      </div>
+    <section class="max-w-3xl mx-auto prose prose-invert prose-lg mb-16 md:mb-24">
+      <h2 class="font-serif text-3xl text-text">The Problem: Bookmark Anxiety is Real</h2>
+      <p>
+        I built #TagChoose to solve my own problem. My bookmark list was a digital graveyard. When I needed a link I'd saved weeks ago, it was often faster to just re-Google it than to dig through dozens of poorly organized folders. The traditional, hierarchical folder system simply isn't built for the way our minds work, forcing us to file complex ideas into a single, restrictive box.
+      </p>
+      <blockquote class="text-2xl font-serif text-center text-primary border-none my-12">
+        "We should file things the way we think — in parallel, not in a hierarchy."
+      </blockquote>
+      <p>
+        #TagChoose is built on that simple premise. Our brains connect ideas associatively. A single idea can relate to <strong class="text-text/90">technology, startups, AND productivity</strong> all at once. By allowing a single bookmark to exist in multiple "folders" (tags) simultaneously, you create a personal knowledge web that's intuitive to search and effortless to organize.
+      </p>
+    </section>
 
-      <div class="prose prose-invert prose-lg max-w-none mb-12">
-        <h2 class="font-serif text-3xl text-text">The Problem: Bookmark Anxiety is Real</h2>
-        <p>
-          I built #TagChoose to solve my own problem. My bookmark list was a digital graveyard. When I needed a link I'd saved weeks ago, it was often faster to just re-Google it than to dig through dozens of poorly organized folders. I tried being more thoughtful about where to save things, but that just added friction and slowed me down. The traditional, hierarchical folder system simply isn't built for the way our minds work.
-        </p>
+    <section class="text-center">
+      <h2 class="text-3xl md:text-5xl font-serif font-bold text-text mb-12">
+        Our Guiding Principles
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div class="bg-background/50 p-8 rounded-lg text-center">
+          <svg class="w-12 h-12 mx-auto mb-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+          <h3 class="text-2xl font-serif font-bold mb-2">Your Data is Yours.</h3>
+          <p class="text-text/80">
+            This is our most important promise. #TagChoose is <strong class="text-text/90">private by design</strong>. It uses an on-device AI model, so your data never leaves your computer. No accounts, no cloud sync, no exceptions.
+          </p>
+        </div>
+        <div class="bg-background/50 p-8 rounded-lg text-center">
+          <svg class="w-12 h-12 mx-auto mb-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+          <h3 class="text-2xl font-serif font-bold mb-2">Respect Your Flow.</h3>
+          <p class="text-text/80">
+            Productivity tools should be <strong class="text-text/90">fast and get out of your way</strong>. We designed a keyboard-first UX so a simple shortcut is all you need. The AI gives a head start, you accept, and you're done. Seamless.
+          </p>
+        </div>
+        <div class="bg-background/50 p-8 rounded-lg text-center">
+          <svg class="w-12 h-12 mx-auto mb-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 20.417l4.5-4.5M12 14a2 2 0 100-4 2 2 0 000 4z"></path></svg>
+          <h3 class="text-2xl font-serif font-bold mb-2">You Are In Control.</h3>
+          <p class="text-text/80">
+            AI should assist, not dictate. Our extension <strong class="text-text/90">suggests tags to help you</strong>, but you always have the final say. Edit the title, accept the suggestions, or choose your own tags. The power is always yours.
+          </p>
+        </div>
       </div>
+    </section>
 
-      <div class="prose prose-invert prose-lg max-w-none mb-12">
-        <h2 class="font-serif text-3xl text-text">The Philosophy: Think in Parallels, Not Hierarchies</h2>
-        <p>
-          #TagChoose is built on a simple premise: we should file things the way we think. Our brains connect ideas associatively, in parallel. A single idea can relate to technology, startups, AND productivity all at once. That's why we use tags. By allowing a single bookmark to exist in multiple "folders" (tags) simultaneously, you create a personal knowledge web that's intuitive to search and effortless to organize.
-        </p>
+    <section class="max-w-3xl mx-auto my-16 md:my-24 text-center">
+      <h2 class="text-3xl md:text-5xl font-serif font-bold text-text mb-8">
+        Who Benefits Most?
+      </h2>
+      <div class="flex flex-wrap justify-center gap-4">
+        <span class="bg-primary/20 text-primary font-semibold px-4 py-2 rounded-full">Researchers</span>
+        <span class="bg-primary/20 text-primary font-semibold px-4 py-2 rounded-full">Professionals</span>
+        <span class="bg-primary/20 text-primary font-semibold px-4 py-2 rounded-full">Students</span>
+        <span class="bg-primary/20 text-primary font-semibold px-4 py-2 rounded-full">Productivity Enthusiasts</span>
       </div>
-
-      <div class="prose prose-invert prose-lg max-w-none">
-        <h2 class="font-serif text-3xl text-text">Our Guiding Principles</h2>
-        <h3 class="font-serif text-2xl text-primary mt-8">1. Your Data is Yours. Period.</h3>
-        <p>
-          This is our most important promise. #TagChoose is private by design. It uses an on-device AI model, which means your Browse data, your bookmarks, and your tags never leave your computer. There are no accounts, no cloud sync, and zero data sent to external servers.
-        </p>
-        <h3 class="font-serif text-2xl text-primary mt-8">2. Software Should Respect Your Flow.</h3>
-        <p>
-          Productivity tools should be fast and get out of your way. We designed #TagChoose with a keyboard-first user experience. A simple shortcut opens the extension, the AI gives you a head start with suggestions, and a quick 'Enter' saves the bookmark. It's built to be a seamless part of your workflow, not an interruption.
-        </p>
-         <h3 class="font-serif text-2xl text-primary mt-8">3. You Are Always in Control.</h3>
-        <p>
-          AI should assist, not dictate. Our extension suggests tags to help you, but you always have the final say. You can edit the bookmark title, accept the AI's suggestions, or choose your own tags from your list of existing folders. The power is always yours.
-        </p>
-      </div>
-      
-      <div class="text-center mt-16">
-        <CTAButton />
-      </div>
-
+    </section>
+    
+    <div class="text-center mt-16">
+      <CTAButton />
     </div>
   </main>
   <Footer />
