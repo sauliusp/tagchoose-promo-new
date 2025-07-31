@@ -1,9 +1,17 @@
 ---
+import { Image } from 'astro:assets';
+import founderAvatar from '../assets/avatar.jpeg';
 ---
 
 <footer class="bg-background border-t border-gray-800 py-12">
   <div class="container mx-auto px-4">
     <div class="flex flex-col md:flex-row items-center justify-between">
+      <!-- Personal Credit -->
+      <div class="flex items-center justify-center mb-4">
+        <Image src={founderAvatar} alt="Creator's avatar" class="w-10 h-10 rounded-full mr-3" />
+        <p class="text-text/80">A passion project by Saulius</p>
+      </div>
+      
       <!-- Links -->
       <div class="flex items-center space-x-6 mb-4 md:mb-0">
         <a href="https://twitter.com" class="text-text hover:text-primary transition-colors duration-200" target="_blank" rel="noopener noreferrer">
