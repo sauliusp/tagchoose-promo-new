@@ -1,0 +1,36 @@
+---
+// File: src/components/Avatar.astro
+import { Image } from 'astro:assets';
+import { SITE } from '../config.ts';
+import founderAvatar from '../assets/avatar.png';
+
+interface Props {
+  size?: 'sm' | 'md' | 'lg';
+  class?: string;
+}
+
+const { size = 'md', class: className } = Astro.props;
+
+const sizeClasses = {
+  sm: 'w-10 h-10',
+  md: 'w-24 h-24',
+  lg: 'w-48 h-48',
+};
+---
+
+<a
+  href={`mailto:${SITE.email}`}
+  title="Drop me a message"
+  class:list={[
+    'relative inline-block p-1 rounded-full transition-all duration-300',
+    'ring-2 ring-primary/50 ring-offset-4 ring-offset-background',
+    'hover:ring-primary hover:scale-105 active:scale-95',
+    className
+  ]}
+>
+  <Image
+    src={founderAvatar}
+    alt={`A photo of ${SITE.name}'s creator`}
+    class:list={['rounded-full object-cover', sizeClasses[size]]}
+  />
+</a>
