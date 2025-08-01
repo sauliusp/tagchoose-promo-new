@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { PAGES } from '../config';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { Image } from 'astro:assets';
@@ -10,7 +11,7 @@ import imageAI from '../assets/1.jpg';       // Local AI
 import imagePhilosophy from '../assets/3.jpg'; // Brain works in tags
 ---
 
-<Layout title="Features - #TagChoose" description="Explore the powerful features of #TagChoose, the smart bookmark manager that uses local AI and a tag-based system to help you find anything.">
+<Layout title={PAGES.features.title} description={PAGES.features.description} schema={PAGES.features.schema}>
   <Header />
   <main class="container mx-auto px-4 py-16 md:py-24">
     <div class="text-center max-w-3xl mx-auto">
