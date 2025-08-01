@@ -4,14 +4,3 @@ export const SITE = {
   gwsLink: "https://chromewebstore.google.com/detail/tagchoose-bookmark-manage/hlfgdfpeekcelanebbfchnnneijhophh",
   email: 'saulius.developer@gmail.com',
 };
-
-export const TARGET_AUDIENCE = [
-    'Researchers',
-    'Developers',
-    'Students',
-    'Product Managers',
-    'Writers',
-    'Designers',
-    'Content Creators',
-    'Productivity Enthusiasts',
-  ],
