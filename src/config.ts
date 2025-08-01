@@ -4,6 +4,6 @@ export const SITE = {
   gwsLink: "https://chromewebstore.google.com/detail/tagchoose-bookmark-manage/hlfgdfpeekcelanebbfchnnneijhophh",
   author: {
    author: 'saulius.developer@gmail.com',
-  name: 'Saulius' 
+    name: 'Saulius' 
   }
 };
