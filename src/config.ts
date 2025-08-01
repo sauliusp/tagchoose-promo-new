@@ -23,7 +23,7 @@ export const PAGES = {
         "@type": "Offer",
         "price": "0"
       },
-      "downloadUrl": "[https://chromewebstore.google.com/detail/tagchoose-bookmark-manage/hlfgdfpeekcelanebbfchnnneijhophh](https://chromewebstore.google.com/detail/tagchoose-bookmark-manage/hlfgdfpeekcelanebbfchnnneijhophh)"
+      "downloadUrl": SITE.gwsLink
     }
   },
   features: {
