@@ -1,14 +1,17 @@
 ---
 import { SITE } from '../config';
+import JsonLD from '../components/JsonLD.astro';
 
 export interface Props {
   title?: string;
   description?: string;
+  schema?: object;
 }
 
 const { 
   title = SITE.title,
-  description = SITE.description
+  description = SITE.description,
+  schema
 } = Astro.props;
 ---
 
@@ -24,6 +27,7 @@ const {
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {schema && <JsonLD schema={schema} />}
   </head>
   <body class="bg-background text-text font-sans">
     <slot />
