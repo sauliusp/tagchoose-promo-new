@@ -24,7 +24,15 @@ export const PAGES = {
         "@type": "Offer",
         "price": "0"
       },
-      "downloadUrl": SITE.gwsLink
+      "downloadUrl": SITE.gwsLink,
+      "publisher": {
+        "@type": "Organization",
+        "name": "#TagChoose",
+        "logo": {
+          "@type": "ImageObject",
+          "url": new URL(SITE.logoUrl, import.meta.env.SITE).href
+        }
+      }
     }
   },
   features: {
@@ -34,7 +42,15 @@ export const PAGES = {
       "@context": "[https://schema.org](https://schema.org)",
       "@type": "WebPage",
       "name": "Features - #TagChoose",
-      "description": "A detailed overview of the core features of the #TagChoose Chrome Extension, including local AI, multi-folder saving, and keyboard-first UX."
+      "description": "A detailed overview of the core features of the #TagChoose Chrome Extension.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "#TagChoose",
+        "logo": {
+          "@type": "ImageObject",
+          "url": new URL(SITE.logoUrl, import.meta.env.SITE).href
+        }
+      }
     }
   },
   manifesto: {
@@ -44,7 +60,15 @@ export const PAGES = {
       "@context": "[https://schema.org](https://schema.org)",
       "@type": "WebPage",
       "name": "The Manifesto - #TagChoose",
-      "description": "The story and guiding principles behind the creation of #TagChoose, a privacy-first, AI-powered bookmarking tool."
+      "description": "The story and guiding principles behind the creation of #TagChoose.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "#TagChoose",
+        "logo": {
+          "@type": "ImageObject",
+          "url": new URL(SITE.logoUrl, import.meta.env.SITE).href
+        }
+      }
     }
   }
 };
