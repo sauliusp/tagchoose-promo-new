@@ -1,11 +1,11 @@
 // Update type constants
-export const UPDATE_TYPES = {
+export const UPDATE_TYPE = {
   ANNOUNCEMENT: 'Announcement',
   RELEASE: 'Release',
   TECHNICAL: 'Technical'
 } as const;
 
-export type UpdateType = typeof UPDATE_TYPES[keyof typeof UPDATE_TYPES];
+export type UpdateType = typeof UPDATE_TYPE[keyof typeof UPDATE_TYPE];
 
 type BaseUpdate = {
   slug: string; // This will be the URL for the post, e.g., /updates/v1-0-0-published
@@ -16,14 +16,14 @@ type BaseUpdate = {
 };
 
 export type AnnouncementUpdate = BaseUpdate & {
-  type: typeof UPDATE_TYPES.ANNOUNCEMENT;
+  type: typeof UPDATE_TYPE.ANNOUNCEMENT;
   body: string;
   ctaLink?: string;
   ctaText?: string;
 };
 
 export type ReleaseUpdate = BaseUpdate & {
-  type: typeof UPDATE_TYPES.RELEASE;
+  type: typeof UPDATE_TYPE.RELEASE;
   version: string;
   changelog: {
     new?: string[];
@@ -33,7 +33,7 @@ export type ReleaseUpdate = BaseUpdate & {
 };
 
 export type TechnicalUpdate = BaseUpdate & {
-  type: typeof UPDATE_TYPES.TECHNICAL;
+  type: typeof UPDATE_TYPE.TECHNICAL;
   body: string;
   issueStatus?: 'Resolved' | 'Investigating' | 'Monitoring';
 };
@@ -136,7 +136,7 @@ export const PAGES = {
 // Now, let's create the UPDATES array with all your content
 export const UPDATES: Update[] = [
   {
-    type: UPDATE_TYPES.ANNOUNCEMENT,
+    type: UPDATE_TYPE.ANNOUNCEMENT,
     slug: 'v1-0-0-published',
     date: '2025-07-14',
     title: '#TagChoose v1.0.0 is Now Live! 🎉',
@@ -151,7 +151,7 @@ export const UPDATES: Update[] = [
     schema: { /* Schema for Announcement Post */ }
   },
   {
-    type: UPDATE_TYPES.RELEASE,
+    type: UPDATE_TYPE.RELEASE,
     slug: 'v1-0-0-release-notes',
     date: '2025-07-12',
     title: 'Version 1.0.0 Release Notes',
@@ -173,7 +173,7 @@ export const UPDATES: Update[] = [
     schema: { /* Schema for Release Post */ }
   },
   {
-    type: UPDATE_TYPES.TECHNICAL,
+    type: UPDATE_TYPE.TECHNICAL,
     slug: 'chrome-compatibility-issue-resolved',
     date: '2025-07-10',
     title: 'Technical Update: Chrome Compatibility Issue Resolved',
@@ -192,7 +192,7 @@ export const UPDATES: Update[] = [
   },
   // ... Add other posts here in reverse chronological order
   {
-    type: UPDATE_TYPES.RELEASE,
+    type: UPDATE_TYPE.RELEASE,
     slug: 'v0-9-2-release-notes',
     date: '2025-05-05',
     title: 'Version 0.9.2 Release Notes',
@@ -211,7 +211,7 @@ export const UPDATES: Update[] = [
     schema: { /* Schema for Release Post */ }
   },
   {
-    type: UPDATE_TYPES.ANNOUNCEMENT,
+    type: UPDATE_TYPE.ANNOUNCEMENT,
     slug: 'published-to-chrome-web-store',
     date: '2025-04-01',
     title: '#TagChoose is Officially Published!',
