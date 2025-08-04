@@ -4,17 +4,17 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Avatar from '../../components/Avatar.astro';
-import { UPDATES, SITE, PAGES } from '../../config';
-import type { Update } from '../../config';
+import { UPDATES, SITE, PAGES, UPDATE_TYPES } from '../../config';
+import type { Update, UpdateType } from '../../config';
 
 // Sort updates by date, newest first
 const sortedUpdates = UPDATES.sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf());
 
 // Helper for styling category tags
-const categoryStyles: Record<Update['type'], string> = {
-  Announcement: 'bg-blue-500/10 text-blue-400 border-blue-500/20',
-  Release: 'bg-green-500/10 text-green-400 border-green-500/20',
-  Technical: 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20',
+const categoryStyles: Record<UpdateType, string> = {
+  [UPDATE_TYPES.ANNOUNCEMENT]: 'bg-blue-500/10 text-blue-400 border-blue-500/20',
+  [UPDATE_TYPES.RELEASE]: 'bg-green-500/10 text-green-400 border-green-500/20',
+  [UPDATE_TYPES.TECHNICAL]: 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20',
 };
 ---
 
