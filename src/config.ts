@@ -1,3 +1,36 @@
+type BaseUpdate = {
+  slug: string; // This will be the URL for the post, e.g., /updates/v1-0-0-published
+  date: string; // In YYYY-MM-DD format
+  title: string;
+  summary: string;
+  schema: object; // To hold the JSON-LD schema
+};
+
+export type AnnouncementUpdate = BaseUpdate & {
+  type: 'Announcement';
+  body: string;
+  ctaLink?: string;
+  ctaText?: string;
+};
+
+export type ReleaseUpdate = BaseUpdate & {
+  type: 'Release';
+  version: string;
+  changelog: {
+    new?: string[];
+    improvements?: string[];
+    fixes?: string[];
+  };
+};
+
+export type TechnicalUpdate = BaseUpdate & {
+  type: 'Technical';
+  body: string;
+  issueStatus?: 'Resolved' | 'Investigating' | 'Monitoring';
+};
+
+export type Update = AnnouncementUpdate | ReleaseUpdate | TechnicalUpdate;
+
 export const SITE = {
   title: "#TagChoose - The Smart Bookmark Manager",
   description: "The smart way to organize your digital life. Save webpages with AI-powered suggestions. Ditch your folders and find your focus.",
@@ -72,43 +105,6 @@ export const PAGES = {
     }
   }
 };
-
-// Add this to your existing config.ts file
-
-// First, let's define the shape of our data for type safety
-type BaseUpdate = {
-  slug: string; // This will be the URL for the post, e.g., /updates/v1-0-0-published
-  date: string; // In YYYY-MM-DD format
-  title: string;
-  summary: string;
-  schema: object; // To hold the JSON-LD schema
-};
-
-export type AnnouncementUpdate = BaseUpdate & {
-  type: 'Announcement';
-  body: string;
-  ctaLink?: string;
-  ctaText?: string;
-};
-
-export type ReleaseUpdate = BaseUpdate & {
-  type: 'Release';
-  version: string;
-  changelog: {
-    new?: string[];
-    improvements?: string[];
-    fixes?: string[];
-  };
-};
-
-export type TechnicalUpdate = BaseUpdate & {
-  type: 'Technical';
-  body: string;
-  issueStatus?: 'Resolved' | 'Investigating' | 'Monitoring';
-};
-
-export type Update = AnnouncementUpdate | ReleaseUpdate | TechnicalUpdate;
-
 
 // Now, let's create the UPDATES array with all your content
 export const UPDATES: Update[] = [
