@@ -1,10 +1,26 @@
 ---
+// src/pages/updates/index.astro
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import { UPDATES, SITE } from '../../config';
+import type { Update } from '../../config';
+
+// Sort updates by date, newest first
+const sortedUpdates = UPDATES.sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf());
+
+// Helper for styling category tags
+const categoryStyles: Record<Update['type'], string> = {
+  Announcement: 'bg-blue-500/10 text-blue-400 border-blue-500/20',
+  Release: 'bg-green-500/10 text-green-400 border-green-500/20',
+  Technical: 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20',
+};
 ---
 
-<Layout title="#TagChoose Blog - From the #TagChoose Blog">
+<Layout 
+  title="Latest Updates - #TagChoose"
+  description="The latest news, release notes, and technical updates for the #TagChoose smart bookmark manager."
+>
   <Header />
   
   <main>
@@ -12,117 +28,45 @@ import Footer from '../../components/Footer.astro';
       <div class="container mx-auto px-4 max-w-6xl">
         <div class="text-center mb-16">
           <h1 class="text-5xl lg:text-6xl font-bold mb-6 font-serif">
-            From the <span class="text-primary">#TagChoose</span> Blog
+            Latest <span class="text-primary">Updates</span>
           </h1>
-          <p class="text-xl text-gray-300">
-            Thoughts on information architecture, productivity, and building better digital tools.
+          <p class="text-lg text-text/80 max-w-2xl mx-auto">
+            Release notes, product announcements, and technical deep-dives for the #TagChoose extension.
           </p>
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Blog Post Card 1 -->
-          <article class="bg-gray-900 bg-opacity-50 rounded-lg border border-gray-700 overflow-hidden hover:border-primary transition-colors duration-200">
-            <div class="p-6">
-              <div class="text-sm text-primary mb-2">Coming Soon</div>
-              <h2 class="text-xl font-bold mb-3 text-text">Why Folders Are Failing You (And What to Do About It)</h2>
-              <p class="text-gray-300 text-sm mb-4">
-                A deep dive into the cognitive mismatch between hierarchical organization and how we actually think about information.
-              </p>
-              <div class="flex items-center text-xs text-gray-400">
-                <span>By #TagChoose Team</span>
-                <span class="mx-2">•</span>
-                <span>5 min read</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Blog Post Card 2 -->
-          <article class="bg-gray-900 bg-opacity-50 rounded-lg border border-gray-700 overflow-hidden hover:border-primary transition-colors duration-200">
-            <div class="p-6">
-              <div class="text-sm text-primary mb-2">Coming Soon</div>
-              <h2 class="text-xl font-bold mb-3 text-text">The Psychology of Information Hoarding</h2>
-              <p class="text-gray-300 text-sm mb-4">
-                Why we save everything but find nothing, and how better organization tools can help break the cycle.
-              </p>
-              <div class="flex items-center text-xs text-gray-400">
-                <span>By #TagChoose Team</span>
-                <span class="mx-2">•</span>
-                <span>7 min read</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Blog Post Card 3 -->
-          <article class="bg-gray-900 bg-opacity-50 rounded-lg border border-gray-700 overflow-hidden hover:border-primary transition-colors duration-200">
-            <div class="p-6">
-              <div class="text-sm text-primary mb-2">Coming Soon</div>
-              <h2 class="text-xl font-bold mb-3 text-text">Building for Privacy in 2025</h2>
-              <p class="text-gray-300 text-sm mb-4">
-                Our technical choices and design philosophy for keeping your data truly private and secure.
-              </p>
-              <div class="flex items-center text-xs text-gray-400">
-                <span>By #TagChoose Team</span>
-                <span class="mx-2">•</span>
-                <span>6 min read</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Blog Post Card 4 -->
-          <article class="bg-gray-900 bg-opacity-50 rounded-lg border border-gray-700 overflow-hidden hover:border-primary transition-colors duration-200">
-            <div class="p-6">
-              <div class="text-sm text-primary mb-2">Coming Soon</div>
-              <h2 class="text-xl font-bold mb-3 text-text">The Future of Personal Knowledge Management</h2>
-              <p class="text-gray-300 text-sm mb-4">
-                Where we think personal information tools are heading, and how #TagChoose fits into that vision.
-              </p>
-              <div class="flex items-center text-xs text-gray-400">
-                <span>By #TagChoose Team</span>
-                <span class="mx-2">•</span>
-                <span>8 min read</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Blog Post Card 5 -->
-          <article class="bg-gray-900 bg-opacity-50 rounded-lg border border-gray-700 overflow-hidden hover:border-primary transition-colors duration-200">
-            <div class="p-6">
-              <div class="text-sm text-primary mb-2">Coming Soon</div>
-              <h2 class="text-xl font-bold mb-3 text-text">Speed vs. Features: Why We Choose Speed</h2>
-              <p class="text-gray-300 text-sm mb-4">
-                The design philosophy behind #TagChoose's lightning-fast performance and why it matters for productivity.
-              </p>
-              <div class="flex items-center text-xs text-gray-400">
-                <span>By #TagChoose Team</span>
-                <span class="mx-2">•</span>
-                <span>4 min read</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Blog Post Card 6 -->
-          <article class="bg-gray-900 bg-opacity-50 rounded-lg border border-gray-700 overflow-hidden hover:border-primary transition-colors duration-200">
-            <div class="p-6">
-              <div class="text-sm text-primary mb-2">Coming Soon</div>
-              <h2 class="text-xl font-bold mb-3 text-text">From Idea to Extension: Our Development Journey</h2>
-              <p class="text-gray-300 text-sm mb-4">
-                The story behind building #TagChoose, from initial frustration with bookmarks to shipping v1.0.
-              </p>
-              <div class="flex items-center text-xs text-gray-400">
-                <span>By #TagChoose Team</span>
-                <span class="mx-2">•</span>
-                <span>10 min read</span>
-              </div>
-            </div>
-          </article>
+          {sortedUpdates.map(update => (
+            <a href={`/updates/${update.slug}`} class="block">
+              <article class="h-full bg-background/50 rounded-lg border border-white/10 overflow-hidden hover:border-primary transition-colors duration-200 flex flex-col">
+                <div class="p-6 flex-grow flex flex-col">
+                  <div class="flex justify-between items-center mb-3">
+                    <span class:list={['text-xs font-semibold px-2.5 py-1 rounded-full border', categoryStyles[update.type]]}>
+                      {update.type}
+                    </span>
+                    <time datetime={update.date} class="text-xs text-text/60">
+                      {new Date(update.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                    </time>
+                  </div>
+                  <h2 class="text-xl font-bold mb-3 text-text flex-grow">{update.title}</h2>
+                  <p class="text-text/70 text-sm mb-4">
+                    {update.summary}
+                  </p>
+                  <div class="flex items-center text-xs text-text/60 mt-auto pt-4 border-t border-white/10">
+                    <span>By {SITE.author.name}</span>
+                  </div>
+                </div>
+              </article>
+            </a>
+          ))}
         </div>
 
-        <div class="text-center mt-16">
-          <p class="text-gray-400 mb-8">
-            Want to be notified when we publish new posts?
+        <div class="text-center mt-24">
+          <p class="text-text/70 mb-8">
+            Want to be notified about new releases and updates?
           </p>
           <div class="flex max-w-md mx-auto">
-            <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 bg-gray-900 border border-gray-700 rounded-l-lg text-text placeholder-gray-400 focus:outline-none focus:border-primary" />
+            <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 bg-background/30 border border-white/20 rounded-l-lg text-text placeholder-text/50 focus:outline-none focus:border-primary" />
             <button class="bg-primary text-background px-6 py-3 rounded-r-lg font-semibold hover:bg-opacity-90 transition-colors duration-200">
               Subscribe
             </button>
