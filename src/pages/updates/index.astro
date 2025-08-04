@@ -3,7 +3,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import { UPDATES, SITE } from '../../config';
+import { UPDATES, SITE, PAGES } from '../../config';
 import type { Update } from '../../config';
 
 // Sort updates by date, newest first
@@ -17,10 +17,7 @@ const categoryStyles: Record<Update['type'], string> = {
 };
 ---
 
-<Layout 
-  title="Latest Updates - #TagChoose"
-  description="The latest news, release notes, and technical updates for the #TagChoose smart bookmark manager."
->
+<Layout title={PAGES.updates.title} description={PAGES.updates.description} schema={PAGES.updates.schema}>
   <Header />
   
   <main>

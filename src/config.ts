@@ -103,6 +103,24 @@ export const PAGES = {
         }
       }
     }
+  },
+  updates: {
+    title: 'Latest Updates - #TagChoose',
+    description: 'The latest news, release notes, and technical updates for the #TagChoose smart bookmark manager.',
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Latest Updates - #TagChoose",
+      "description": "The latest news, release notes, and technical updates for the #TagChoose smart bookmark manager.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "#TagChoose",
+        "logo": {
+          "@type": "ImageObject",
+          "url": new URL(SITE.logoUrl, import.meta.env.SITE).href
+        }
+      }
+    }
   }
 };
 
@@ -116,7 +134,7 @@ export const UPDATES: Update[] = [
     summary: 'The latest version, featuring a completely rebuilt AI system, has been approved and is now live on the Chrome Web Store for all users.',
     body: `
       <p>I'm thrilled to announce that #TagChoose v1.0.0 has been approved and is now live on the Chrome Web Store!</p>
-      <p>This new version represents a complete migration to Chrome’s native AI LanguageModel API, resolving recent compatibility issues and dramatically improving performance. Existing users should receive the update automatically within the next 24-48 hours.</p>
+      <p>This new version represents a complete migration to Chrome's native AI LanguageModel API, resolving recent compatibility issues and dramatically improving performance. Existing users should receive the update automatically within the next 24-48 hours.</p>
       <p>Thank you for your patience and support! You can get the latest version now from the store.</p>
     `,
     ctaLink: SITE.gwsLink,
@@ -156,9 +174,9 @@ export const UPDATES: Update[] = [
       <h3>The Issue</h3>
       <p>After a recent Chrome update, users began seeing the error message, preventing the use of AI features.</p>
       <h3>Root Cause</h3>
-      <p>The issue was caused by Chrome’s official transition from an experimental "Origin Trial" AI API to the new, stable LanguageModel API.</p>
+      <p>The issue was caused by Chrome's official transition from an experimental "Origin Trial" AI API to the new, stable LanguageModel API.</p>
       <h3>The Solution</h3>
-      <p>I have completed a full migration of #TagChoose to use Chrome’s new native AI API. This not only resolves the error but also improves performance and reliability. This fix is included in the v1.0.0 release.</p>
+      <p>I have completed a full migration of #TagChoose to use Chrome's new native AI API. This not only resolves the error but also improves performance and reliability. This fix is included in the v1.0.0 release.</p>
     `,
     issueStatus: 'Resolved',
     schema: { /* Schema for Technical Post */ }
