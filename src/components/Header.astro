@@ -17,24 +17,66 @@ import { SITE } from '../config.ts';
         </a>
       </div>
       
-      <!-- Navigation -->
+      <!-- Desktop Navigation -->
       <nav class="hidden md:flex items-center space-x-8">
         <a href="/features" class="text-text hover:text-primary transition-colors duration-200">Features</a>
         <a href="/manifesto" class="text-text hover:text-primary transition-colors duration-200">Manifesto</a>
         <a href="/updates" class="text-text hover:text-primary transition-colors duration-200">Updates</a>
       </nav>
       
-      <!-- CTA Button -->
-      <div class="flex items-center">
+      <!-- Desktop CTA Button -->
+      <div class="hidden md:flex items-center">
         <CTAButton />
       </div>
       
       <!-- Mobile Menu Button -->
-      <button class="md:hidden text-text">
+      <button 
+        id="mobile-menu-button"
+        class="md:hidden text-text hover:text-primary transition-colors duration-200"
+        aria-label="Toggle mobile menu"
+      >
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
       </button>
     </div>
+    
+    <!-- Mobile Menu -->
+    <div 
+      id="mobile-menu"
+      class="hidden md:hidden mt-4 pb-4 border-t border-gray-800"
+    >
+      <nav class="flex flex-col space-y-4 pt-4">
+        <a href="/features" class="text-text hover:text-primary transition-colors duration-200 py-2">Features</a>
+        <a href="/manifesto" class="text-text hover:text-primary transition-colors duration-200 py-2">Manifesto</a>
+        <a href="/updates" class="text-text hover:text-primary transition-colors duration-200 py-2">Updates</a>
+      </nav>
+    </div>
+  </div>
+  
+  <!-- Mobile CTA Button -->
+  <div class="md:hidden bg-background border-b border-gray-800 py-4">
+    <div class="container mx-auto px-4 flex justify-center">
+      <CTAButton />
+    </div>
   </div>
 </header>
+
+<script>
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', () => {
+      const isHidden = mobileMenu.classList.contains('hidden');
+      
+      if (isHidden) {
+        mobileMenu.classList.remove('hidden');
+        mobileMenuButton.setAttribute('aria-expanded', 'true');
+      } else {
+        mobileMenu.classList.add('hidden');
+        mobileMenuButton.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+</script>
