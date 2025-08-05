@@ -1,0 +1,105 @@
+---
+// src/pages/updates/[slug].astro
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Avatar from '../../components/Avatar.astro';
+import { UPDATES, SITE } from '../../config';
+import type { Update } from '../../config';
+
+// This function runs at build time to generate a page for each update
+export async function getStaticPaths() {
+  return UPDATES.map(update => ({
+    params: { slug: update.slug },
+    props: { update },
+  }));
+}
+
+const { update } = Astro.props;
+
+// Helper for styling category tags
+const categoryStyles: Record<Update['type'], string> = {
+  Announcement: 'bg-blue-500/10 text-blue-400 border-blue-500/20',
+  Release: 'bg-green-500/10 text-green-400 border-green-500/20',
+  Technical: 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20',
+};
+
+// Helper for styling issue status
+const statusStyles = {
+  Resolved: 'bg-green-500/10 text-green-400 border-green-500/20',
+  Investigating: 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20',
+  Monitoring: 'bg-purple-500/10 text-purple-400 border-purple-500/20',
+};
+---
+
+<Layout 
+  title={update.title} 
+  description={update.summary} 
+  schema={update.schema}
+>
+  <Header />
+  
+  <main class="py-20 lg:py-32">
+    <article class="container mx-auto px-4 max-w-3xl">
+      <header class="text-center">
+        <div class="mb-4">
+          <span class:list={['text-sm font-semibold px-3 py-1 rounded-full border', categoryStyles[update.type]]}>
+            {update.type}{update.type === 'Release' && ` ${update.version}`}
+          </span>
+        </div>
+        <h1 class="text-4xl lg:text-5xl font-bold mb-6 font-serif text-text" set:html={update.titleHtml}>
+        </h1>
+        <div class="flex items-center justify-center gap-4 text-text/70">
+          <Avatar 
+            size="sm" 
+            primary={SITE.author.name} 
+            showText={true}
+          />
+          <span class="opacity-50">•</span>
+          <time datetime={update.date}>
+            {new Date(update.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </time>
+        </div>
+      </header>
+      
+      <div class="max-w-none mt-16">
+        {update.content.map(block => {
+          switch (block.type) {
+            case 'heading':
+              return <h3 class="font-serif text-3xl text-primary mt-12 mb-4" set:html={block.textHtml} />
+            
+            case 'paragraph':
+              return <p class="text-lg text-text/80 mb-6 leading-relaxed" set:html={block.textHtml} />
+            
+            case 'list':
+              return <ul class="list-disc list-inside space-y-2 mb-6 text-lg text-text/80">{block.items.map(item => <li set:html={item} />)}</ul>
+            
+            case 'callout':
+              return <div class="bg-primary/10 border-l-4 border-primary p-6 rounded-r-lg my-8 text-lg" set:html={block.textHtml} />
+            
+            case 'changelog':
+              return (
+                <div class="space-y-4 my-8">
+                  {block.items.map(item => (
+                    <div class="flex items-start bg-background/30 p-1 rounded-lg">
+                      {item.type === 'improvement' && <span class="text-green-400 mr-4 text-2xl" title="Improvement">✅</span>}
+                      {item.type === 'fix' && <span class="text-yellow-400 mr-4 text-2xl" title="Fix">🐞</span>}
+                      <span class="text-text/90 text-base" set:html={item.textHtml} />
+                    </div>
+                  ))}
+                </div>
+              )
+          }
+        })}
+      </div>
+
+      <div class="text-center mt-16 pt-8 border-t border-white/10">
+        <a href="/updates" class="text-primary hover:underline">
+          &larr; Back to All Updates
+        </a>
+      </div>
+    </article>
+  </main>
+
+  <Footer />
+</Layout>

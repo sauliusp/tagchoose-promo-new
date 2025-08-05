@@ -5,32 +5,75 @@ import { SITE } from '../config.ts';
 import founderAvatar from '../assets/avatar.jpeg';
 
 interface Props {
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'xs' | 'sm' | 'md' | 'lg';
   class?: string;
+  primary?: string;
+  secondary?: string;
+  showText?: boolean;
+  standalone?: boolean;
 }
 
-const { size = 'md', class: className } = Astro.props;
+const { size = 'md', class: className, primary, secondary, showText = false, standalone = true } = Astro.props;
 
 const sizeClasses = {
+  xs: 'w-6 h-6',
   sm: 'w-10 h-10',
   md: 'w-24 h-24',
   lg: 'w-48 h-48',
 };
 ---
 
-<a
-  href={`mailto:${SITE.author.email}`}
-  title="Drop me a message"
-  class:list={[
-    'relative inline-block p-1 rounded-full transition-all duration-300',
-    'ring-2 ring-primary/50 ring-offset-4 ring-offset-background',
-    'hover:ring-primary hover:scale-105 active:scale-95',
-    className
-  ]}
->
-  <Image
-    src={founderAvatar}
-    alt={`A photo of ${SITE.title}'s creator`}
-    class:list={['rounded-full object-cover', sizeClasses[size]]}
-  />
-</a>
+<div class="flex items-center gap-3">
+  {standalone ? (
+    <a
+      href={`mailto:${SITE.author.email}`}
+      title="Drop me a message"
+      class:list={[
+        'relative inline-block rounded-full transition-all duration-300',
+        'ring-2 ring-primary/30 ring-offset-2 ring-offset-background',
+        'hover:ring-primary hover:scale-105 active:scale-95',
+        className
+      ]}
+    >
+      <Image
+        src={founderAvatar}
+        alt={`A photo of ${SITE.title}'s creator`}
+        class:list={['rounded-full object-cover', sizeClasses[size]]}
+      />
+    </a>
+  ) : (
+    <div
+      class:list={[
+        'relative inline-block rounded-full',
+        'ring-2 ring-primary/30 ring-offset-2 ring-offset-background',
+        className
+      ]}
+    >
+      <Image
+        src={founderAvatar}
+        alt={`A photo of ${SITE.title}'s creator`}
+        class:list={['rounded-full object-cover', sizeClasses[size]]}
+      />
+    </div>
+  )}
+  
+  {showText && (primary || secondary) && (
+    standalone ? (
+      <a
+        href={`mailto:${SITE.author.email}`}
+        title="Drop me a message"
+        class="hover:text-primary transition-colors duration-200"
+      >
+        <div class="flex flex-col">
+          {primary && <span class="text-text font-medium">{primary}</span>}
+          {secondary && <span class="text-text/70 text-sm">{secondary}</span>}
+        </div>
+      </a>
+    ) : (
+      <div class="flex flex-col">
+        {primary && <span class="text-text font-medium">{primary}</span>}
+        {secondary && <span class="text-text/70 text-sm">{secondary}</span>}
+      </div>
+    )
+  )}
+</div>

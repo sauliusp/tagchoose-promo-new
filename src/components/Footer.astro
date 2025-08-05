@@ -7,8 +7,12 @@ import Avatar from './Avatar.astro';
     <div class="flex flex-col md:flex-row items-center justify-between">
       <!-- Personal Credit -->
       <div class="flex items-center justify-center mb-4">
-        <Avatar size="sm" class="ring-offset-2 mr-3" />
-        <p class="text-text/80">A passion project by Saulius</p>
+        <Avatar 
+          size="sm" 
+          primary="Saulius" 
+          secondary="A passion project" 
+          showText={true}
+        />
       </div>
       
       <!-- Links -->

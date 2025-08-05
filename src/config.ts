@@ -1,4 +1,3 @@
-// Update type constants
 export const UPDATE_TYPE = {
   ANNOUNCEMENT: 'Announcement',
   RELEASE: 'Release',
@@ -7,48 +6,20 @@ export const UPDATE_TYPE = {
 
 export type UpdateType = typeof UPDATE_TYPE[keyof typeof UPDATE_TYPE];
 
-type BaseUpdate = {
-  slug: string; // This will be the URL for the post, e.g., /updates/v1-0-0-published
-  date: string; // In YYYY-MM-DD format
-  title: string;
-  summary: string;
-  schema: object; // To hold the JSON-LD schema
-};
-
-export type AnnouncementUpdate = BaseUpdate & {
-  type: typeof UPDATE_TYPE.ANNOUNCEMENT;
-  body: string;
-  ctaLink?: string;
-  ctaText?: string;
-};
-
-export type ReleaseUpdate = BaseUpdate & {
-  type: typeof UPDATE_TYPE.RELEASE;
-  version: string;
-  changelog: {
-    new?: string[];
-    improvements?: string[];
-    fixes?: string[];
-  };
-};
-
-export type TechnicalUpdate = BaseUpdate & {
-  type: typeof UPDATE_TYPE.TECHNICAL;
-  body: string;
-  issueStatus?: 'Resolved' | 'Investigating' | 'Monitoring';
-};
-
-export type Update = AnnouncementUpdate | ReleaseUpdate | TechnicalUpdate;
-
 export const SITE = {
+  name: '#TagChoose',
   title: "#TagChoose - The Smart Bookmark Manager",
-  description: "The smart way to organize your digital life. Save webpages with AI-powered suggestions. Ditch your folders and find your focus.",
+  description: "The smart way to organize your digital life with an AI-powered bookmark manager. Ditch your folders and find your focus.",
   logoUrl: '/logo.png',
   gwsLink: "https://chromewebstore.google.com/detail/tagchoose-bookmark-manage/hlfgdfpeekcelanebbfchnnneijhophh",
   author: {
-   email: 'saulius.devefdasfadsloper@gmail.com',
-   name: 'Saulius' 
-  }
+    name: 'Saulius',
+    email: 'saulius.developer@gmail.com',
+  },
+  userProfiles: [
+    'Researchers', 'Developers', 'Students', 'Product Managers',
+    'Writers', 'Designers', 'Content Creators', 'Productivity Enthusiasts',
+  ],
 };
 
 export const PAGES = {
@@ -133,96 +104,139 @@ export const PAGES = {
   }
 };
 
-// Now, let's create the UPDATES array with all your content
+// Define the types for our content blocks
+type ContentBlock =
+  | { type: 'heading'; level: 2 | 3; textHtml: string }
+  | { type: 'paragraph'; textHtml: string }
+  | { type: 'list'; items: readonly string[] }
+  | { type: 'callout'; kind: 'info' | 'warning'; textHtml: string }
+  | { type: 'changelog'; items: readonly { type: 'improvement' | 'fix'; textHtml: string }[] };
+
+// Updated Update type definitions
+export type BaseUpdate = {
+  slug: string;
+  date: string;
+  title: string;
+  titleHtml: string;
+  summary: string;
+  schema: object;
+  content: readonly ContentBlock[];
+};
+
+export type AnnouncementUpdate = BaseUpdate & { type: 'Announcement' };
+export type ReleaseUpdate = BaseUpdate & { type: 'Release'; version: string };
+export type TechnicalUpdate = BaseUpdate & { type: 'Technical'; issueStatus?: 'Resolved' | 'Investigating' };
+
+export type Update = AnnouncementUpdate | ReleaseUpdate | TechnicalUpdate;
+
+
+// The UPDATES array using the content block system
 export const UPDATES: Update[] = [
+  {
+    type: UPDATE_TYPE.ANNOUNCEMENT,
+    slug: 'new-promo-website-launch',
+    date: '2025-08-05',
+    title: 'Announcing the New #TagChoose Promotional Website',
+    titleHtml: 'Announcing the New <span class="text-primary">#TagChoose</span> Promotional Website',
+    summary: 'The new, official promo website for #TagChoose is now live, featuring detailed information on features, the project\'s philosophy, and all future updates.',
+          content: [
+        { type: 'paragraph', textHtml: 'Today marks the launch of the new promotional website for #TagChoose. The goal of this site is to provide a clear and detailed overview of the extension\'s features and the philosophy behind its design.' },
+        { type: 'heading', level: 3, textHtml: 'Key Sections on the New Site' },
+        { type: 'list', items: [
+          '<strong><a href="/features" class="underline">Features:</a></strong> A detailed breakdown of all core functionalities, from AI-powered tag suggestions to the "Folders = Tags" paradigm.',
+          '<strong><a href="/manifesto" class="underline">Manifesto:</a></strong> The story behind why I built #TagChoose to solve "bookmark anxiety" and the privacy-first principles that guide its development.',
+          '<strong>Updates:</strong> This section, where you are now, will be the official source for all future release notes and technical news.'
+        ]},
+        { type: 'paragraph', textHtml: 'The site is designed to be a comprehensive resource for current and future users. All feedback is welcome—you can reach me directly by clicking my avatar in the footer. Thank you for your support.' }
+      ],
+    schema: {},
+  },
   {
     type: UPDATE_TYPE.ANNOUNCEMENT,
     slug: 'v1-0-0-published',
     date: '2025-07-14',
     title: '#TagChoose v1.0.0 is Now Live! 🎉',
+    titleHtml: '<span class="text-primary">#TagChoose v1.0.0</span> is Now Live! 🎉',
     summary: 'The latest version, featuring a completely rebuilt AI system, has been approved and is now live on the Chrome Web Store for all users.',
-    body: `
-      <p>I'm thrilled to announce that #TagChoose v1.0.0 has been approved and is now live on the Chrome Web Store!</p>
-      <p>This new version represents a complete migration to Chrome's native AI LanguageModel API, resolving recent compatibility issues and dramatically improving performance. Existing users should receive the update automatically within the next 24-48 hours.</p>
-      <p>Thank you for your patience and support! You can get the latest version now from the store.</p>
-    `,
-    ctaLink: SITE.gwsLink,
-    ctaText: 'Get v1.0.0 on the Chrome Store',
-    schema: { /* Schema for Announcement Post */ }
+    content: [
+      { type: 'paragraph', textHtml: "I'm thrilled to announce that #TagChoose v1.0.0 has been approved and is now live on the Chrome Web Store!" },
+      { type: 'paragraph', textHtml: "This new version represents a complete migration to Chrome's native AI LanguageModel API, resolving recent compatibility issues and dramatically improving performance. Existing users should receive the update automatically within the next 24-48 hours." },
+      { type: 'callout', kind: 'info', textHtml: `You can get the latest version now from the <a href="${SITE.gwsLink}" target="_blank" rel="noopener noreferrer" class="font-bold underline">Chrome Web Store page</a>.`},
+    ] as const,
+    schema: {}, // Will be auto-generated by the .map() below
   },
   {
     type: UPDATE_TYPE.RELEASE,
     slug: 'v1-0-0-release-notes',
     date: '2025-07-12',
     title: 'Version 1.0.0 Release Notes',
-    version: 'v1.0.0',
+    titleHtml: 'Version <span class="text-primary">1.0.0</span> Release Notes',
+    version: 'v1.0.0',  
     summary: 'A complete rebuild of the AI system for better performance, reliability, and compatibility with the latest versions of Chrome.',
-    changelog: {
-      improvements: [
-        'Completely rebuilt AI system for better performance and reliability',
-        'Added progress tracking when downloading AI models',
-        'Improved error messages and user feedback',
-        'Enhanced bookmark categorization accuracy',
-      ],
-      fixes: [
-        'Fixed issues with AI suggestions not appearing',
-        'More stable performance across different Chrome versions',
-        'Better handling of different AI availability states',
-      ]
-    },
-    schema: { /* Schema for Release Post */ }
+    content: [
+      { type: 'paragraph', textHtml: 'This version is a complete rebuild of the AI system for better performance and reliability, and it resolves all recent Chrome compatibility issues.' },
+      { type: 'changelog', items: [
+        { type: 'improvement', textHtml: 'Completely rebuilt AI system for better performance and reliability.' },
+        { type: 'improvement', textHtml: 'Added progress tracking when downloading AI models.' },
+        { type: 'improvement', textHtml: 'Improved error messages and user feedback.' },
+        { type: 'improvement', textHtml: 'Enhanced bookmark categorization accuracy.' },
+        { type: 'fix', textHtml: 'Fixed issues with AI suggestions not appearing.' },
+        { type: 'fix', textHtml: 'More stable performance across different Chrome versions.' },
+      ]},
+    ] as const,
+    schema: {},
   },
   {
     type: UPDATE_TYPE.TECHNICAL,
     slug: 'chrome-compatibility-issue-resolved',
     date: '2025-07-10',
     title: 'Technical Update: Chrome Compatibility Issue Resolved',
-    summary: 'An explanation of the "AI features not supported" error and how it has been fixed in the upcoming v1.0.0 release.',
-    body: `
-      <p>Over the past week, some users running the latest versions of Chrome encountered an error message: "AI features are not supported in your browser." I want to be transparent about what happened and how it's been fixed.</p>
-      <h3>The Issue</h3>
-      <p>After a recent Chrome update, users began seeing the error message, preventing the use of AI features.</p>
-      <h3>Root Cause</h3>
-      <p>The issue was caused by Chrome's official transition from an experimental "Origin Trial" AI API to the new, stable LanguageModel API.</p>
-      <h3>The Solution</h3>
-      <p>I have completed a full migration of #TagChoose to use Chrome's new native AI API. This not only resolves the error but also improves performance and reliability. This fix is included in the v1.0.0 release.</p>
-    `,
+    titleHtml: 'Technical Update: <span class="text-primary">Chrome Compatibility Issue</span> Resolved',
     issueStatus: 'Resolved',
-    schema: { /* Schema for Technical Post */ }
+    summary: 'An explanation of the "AI features not supported" error and how it has been fixed in the v1.0.0 release.',
+    content: [
+      { type: 'paragraph', textHtml: 'Over the past week, some users running the latest versions of Chrome encountered an error message: "AI features are not supported in your browser." I want to be transparent about what happened and how it\'s been fixed.' },
+      { type: 'heading', level: 3, textHtml: 'The Issue' },
+      { type: 'paragraph', textHtml: 'After a recent Chrome update, users began seeing the error message, preventing the use of AI features.' },
+      { type: 'heading', level: 3, textHtml: 'Root Cause' },
+      { type: 'paragraph', textHtml: "The issue was caused by Chrome's official transition from an experimental \"Origin Trial\" AI API to the new, stable LanguageModel API." },
+      { type: 'heading', level: 3, textHtml: 'The Solution' },
+      { type: 'paragraph', textHtml: "I have completed a full migration of #TagChoose to use Chrome's new native AI API. This not only resolves the error but also improves performance and reliability. This fix is included in the v1.0.0 release." },
+    ] as const,
+    schema: {},
   },
-  // ... Add other posts here in reverse chronological order
   {
     type: UPDATE_TYPE.RELEASE,
     slug: 'v0-9-2-release-notes',
     date: '2025-05-05',
     title: 'Version 0.9.2 Release Notes',
+    titleHtml: 'Version <span class="text-primary">0.9.2</span> Release Notes',
     version: 'v0.9.2',
     summary: 'A quality-of-life update with UI improvements and bug fixes.',
-    changelog: {
-      improvements: [
-        'Improved footer layout with refined donation button placement',
-        'Simplified extension name and updated URLs',
-        'Added tooltips for better user feedback',
-      ],
-      fixes: [
-        'Removed redundant browser update alert',
-      ]
-    },
-    schema: { /* Schema for Release Post */ }
+    content: [
+      { type: 'changelog', items: [
+        { type: 'improvement', textHtml: 'Improved footer layout with refined donation button placement.' },
+        { type: 'improvement', textHtml: 'Simplified extension name and updated URLs.' },
+        { type: 'improvement', textHtml: 'Added tooltips for better user feedback.' },
+        { type: 'fix', textHtml: 'Removed redundant browser update alert.' },
+      ]},
+    ] as const,
+    schema: {},
   },
   {
     type: UPDATE_TYPE.ANNOUNCEMENT,
     slug: 'published-to-chrome-web-store',
     date: '2025-04-01',
     title: '#TagChoose is Officially Published!',
+    titleHtml: '<span class="text-primary">#TagChoose</span> is Officially Published!',
     summary: 'The very first version of #TagChoose is now available for download on the Google Chrome Web Store.',
-    body: '<p>The first version of #TagChoose is now live and available for everyone to install. I built this to solve my own bookmarking anxiety, and I hope it helps you too!</p>',
-    ctaLink: SITE.gwsLink,
-    ctaText: 'View on the Chrome Store',
-    schema: { /* Schema for Announcement Post */ }
+    content: [
+        { type: 'paragraph', textHtml: 'The first version of #TagChoose is now live and available for everyone to install. I built this to solve my own bookmarking anxiety, and I hope it helps you too!' },
+        { type: 'callout', kind: 'info', textHtml: `You can find it on the <a href="${SITE.gwsLink}" target="_blank" rel="noopener noreferrer" class="font-bold underline">Chrome Web Store</a>.`}
+    ] as const,
+    schema: {},
   },
 ].map(update => {
-  // Automatically generate the correct schema for each update
   const baseSchema = {
     "@context": "https://schema.org",
     "headline": update.title,

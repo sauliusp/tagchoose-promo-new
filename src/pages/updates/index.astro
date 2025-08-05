@@ -4,21 +4,24 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Avatar from '../../components/Avatar.astro';
-import { UPDATES, SITE, PAGES, UPDATE_TYPE } from '../../config';
+import { UPDATES, SITE, UPDATE_TYPE } from '../../config'; // Import UPDATE_TYPE
 import type { Update, UpdateType } from '../../config';
 
 // Sort updates by date, newest first
 const sortedUpdates = UPDATES.sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf());
 
-// Helper for styling category tags
-const categoryStyles: Record<typeof UPDATE_TYPE[keyof typeof UPDATE_TYPE], string> = {
+// UPDATED: Use the UPDATE_TYPE constant for keys
+const categoryStyles: Record<UpdateType, string> = {
   [UPDATE_TYPE.ANNOUNCEMENT]: 'bg-blue-500/10 text-blue-400 border-blue-500/20',
   [UPDATE_TYPE.RELEASE]: 'bg-green-500/10 text-green-400 border-green-500/20',
   [UPDATE_TYPE.TECHNICAL]: 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20',
 };
 ---
 
-<Layout title={PAGES.updates.title} description={PAGES.updates.description} schema={PAGES.updates.schema}>
+<Layout 
+  title="Latest Updates - #TagChoose"
+  description="The latest news, release notes, and technical updates for the #TagChoose smart bookmark manager."
+>
   <Header />
   
   <main>
@@ -46,12 +49,17 @@ const categoryStyles: Record<typeof UPDATE_TYPE[keyof typeof UPDATE_TYPE], strin
                       {new Date(update.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                     </time>
                   </div>
-                  <h2 class="text-xl font-bold mb-3 text-text flex-grow">{update.title}</h2>
+                  <h2 class="text-xl font-bold mb-3 text-text flex-grow" set:html={update.titleHtml}></h2>
                   <p class="text-text/70 text-sm mb-4">
                     {update.summary}
                   </p>
                   <div class="flex items-center text-xs text-text/60 mt-auto pt-4 border-t border-white/10">
-                    <span>By {SITE.author.name}</span>
+                    <Avatar 
+                      size="xs" 
+                      primary={SITE.author.name} 
+                      showText={true}
+                      standalone={false}
+                    />
                   </div>
                 </div>
               </article>
