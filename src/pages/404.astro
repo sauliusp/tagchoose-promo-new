@@ -2,6 +2,15 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { PAGES } from '../config';
+
+// Create a list of pages we want to show, using data from the config file.
+// This makes the list easy to update in the future.
+const navLinks = [
+  { href: '/features', name: PAGES.features.name },
+  { href: '/manifesto', name: PAGES.manifesto.name },
+  { href: '/updates', name: PAGES.updates.name },
+];
 ---
 
 <Layout 
@@ -12,7 +21,7 @@ import Footer from '../components/Footer.astro';
   
   <main class="container mx-auto px-4 py-20 md:py-32 text-center">
     <div class="mb-12 md:mb-16">
-      <h1 class="text-9xl font-bold text-primary mb-6 md:mb-8">404</h1>
+      <h1 class="text-8xl md:text-9xl font-bold text-primary mb-6 md:mb-8">404</h1>
       <h2 class="text-3xl md:text-4xl font-serif font-bold text-text mb-6">
         Page Not Found
       </h2>
@@ -30,11 +39,14 @@ import Footer from '../components/Footer.astro';
       </a>
       
       <div class="flex flex-wrap justify-center items-center gap-4 md:gap-6 text-base">
-        <a href="/features" class="text-text/80 hover:text-primary transition-colors duration-200">Features</a>
-        <span class="text-text/40">•</span>
-        <a href="/manifesto" class="text-text/80 hover:text-primary transition-colors duration-200">Manifesto</a>
-        <span class="text-text/40">•</span>
-        <a href="/updates" class="text-text/80 hover:text-primary transition-colors duration-200">Updates</a>
+        {navLinks.map((link, index) => (
+          <>
+            <a href={link.href} class="text-text/80 hover:text-primary transition-colors duration-200">
+              {link.name}
+            </a>
+            {index < navLinks.length - 1 && <span class="text-text/40">•</span>}
+          </>
+        ))}
       </div>
     </div>
   </main>
