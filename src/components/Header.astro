@@ -16,7 +16,7 @@ import { SITE } from '../config.ts';
       
       <!-- Desktop Navigation -->
       <nav class="hidden md:flex items-center space-x-8">
-        <a href="/features" class="text-text hover:text-primary transition-colors duration-200">Features</a>
+        <a href={`${import.meta.env.BASE_URL}/features`} class="text-text hover:text-primary transition-colors duration-200">Features</a>
         <a href="/manifesto" class="text-text hover:text-primary transition-colors duration-200">Manifesto</a>
         <a href="/updates" class="text-text hover:text-primary transition-colors duration-200">Updates</a>
       </nav>
