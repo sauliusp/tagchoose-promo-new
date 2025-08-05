@@ -2,6 +2,7 @@
 // src/pages/updates/index.astro
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Footer from '../../components/Footer.astro';
 import Avatar from '../../components/Avatar.astro';
 import WhoBenefits from '../../components/WhoBenefits.astro';
@@ -24,6 +25,7 @@ const categoryStyles: Record<UpdateType, string> = {
   description="The latest news, release notes, and technical updates for the #TagChoose smart bookmark manager."
 >
   <Header />
+  <Breadcrumbs />
   
   <main>
     <section class="py-20 lg:py-32">

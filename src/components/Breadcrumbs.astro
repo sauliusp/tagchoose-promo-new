@@ -1,0 +1,57 @@
+---
+// src/components/Breadcrumbs.astro
+import { SITE, PAGES, UPDATES } from '../config';
+
+const { url } = Astro;
+const pathSegments = url.pathname.split('/').filter(p => p);
+
+const crumbs: { name: string; href?: string }[] = [{ name: 'Home', href: '/' }];
+
+if (pathSegments.length > 0) {
+  switch (pathSegments[0]) {
+    case 'features':
+      crumbs.push({ name: PAGES.features.title, href: '/features' });
+      break;
+    case 'manifesto':
+      crumbs.push({ name: PAGES.manifesto.title, href: '/manifesto' });
+      break;
+    case 'updates':
+      crumbs.push({ name: PAGES.updates.title, href: '/updates' });
+      if (pathSegments.length > 1) {
+        const update = UPDATES.find(u => u.slug === pathSegments[1]);
+        if (update) {
+          crumbs.push({ name: update.title }); // Last crumb is not a link
+        }
+      }
+      break;
+  }
+}
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": crumbs.map((crumb, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "name": crumb.name,
+    "item": crumb.href ? new URL(crumb.href, Astro.site).href : undefined
+  }))
+};
+---
+
+<nav aria-label="Breadcrumb" class="container mx-auto px-4 mt-8">
+  <ol class="flex items-center gap-2 text-sm text-text/60">
+    {crumbs.map((crumb, index) => (
+      <li class="flex items-center gap-2">
+        {index > 0 && <span class="opacity-50">/</span>}
+        {crumb.href ? (
+          <a href={crumb.href} class="hover:text-primary hover:underline">{crumb.name}</a>
+        ) : (
+          <span class="font-semibold text-text/80">{crumb.name}</span>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} />

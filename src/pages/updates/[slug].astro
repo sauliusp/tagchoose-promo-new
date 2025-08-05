@@ -2,6 +2,7 @@
 // src/pages/updates/[slug].astro
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Footer from '../../components/Footer.astro';
 import Avatar from '../../components/Avatar.astro';
 import { UPDATES, SITE } from '../../config';
@@ -38,6 +39,7 @@ const statusStyles = {
   schema={update.schema}
 >
   <Header />
+  <Breadcrumbs />
   
   <main class="py-20 lg:py-32">
     <article class="content-container-wide">
