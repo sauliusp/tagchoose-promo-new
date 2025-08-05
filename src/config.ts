@@ -24,6 +24,7 @@ export const SITE = {
 
 export const PAGES = {
   index: {
+    name: 'Home',
     title: SITE.title,
     description: SITE.description,
     schema: {
@@ -49,6 +50,7 @@ export const PAGES = {
     }
   },
   features: {
+    name: 'Features',
     title: 'Features - #TagChoose',
     description: 'Explore the powerful features of #TagChoose, the smart bookmark manager that uses local AI and a tag-based system to help you find anything.',
     schema: {
@@ -67,6 +69,7 @@ export const PAGES = {
     }
   },
   manifesto: {
+    name: 'The Manifesto',
     title: 'The Manifesto - #TagChoose',
     description: 'My beliefs on information overload, privacy, and building a bookmark manager that works like your brain, not a filing cabinet.',
     schema: {
@@ -85,6 +88,7 @@ export const PAGES = {
     }
   },
   updates: {
+    name: 'Updates',
     title: 'Latest Updates - #TagChoose',
     description: 'The latest news, release notes, and technical updates for the #TagChoose smart bookmark manager.',
     schema: {
