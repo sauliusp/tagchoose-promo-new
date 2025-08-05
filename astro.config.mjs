@@ -6,7 +6,7 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   site: 'https://sauliusp.github.io', 
 
-  base: '/tagchoose-promo-new/', 
+  base: '/tagchoose-promo-new', 
   
   integrations: [tailwind()],
 
