@@ -41,9 +41,9 @@ const breadcrumbSchema = {
 ---
 
 <nav aria-label="Breadcrumb" class="container mx-auto px-4 mt-8">
-  <ol class="hidden md:flex items-center gap-2 text-sm text-text/60">
+  <ol class="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs md:text-sm text-text/60">
     {crumbs.map((crumb, index) => (
-      <li class="flex items-center gap-2">
+      <li class="flex items-center gap-x-2">
         {index > 0 && <span class="opacity-50">/</span>}
         {crumb.href ? (
           <a href={crumb.href} class="hover:text-primary hover:underline">{crumb.name}</a>
@@ -52,28 +52,6 @@ const breadcrumbSchema = {
         )}
       </li>
     ))}
-  </ol>
-
-  <ol class="flex md:hidden items-center gap-2 text-xs text-text/60">
-    <li class="flex items-center gap-2">
-      <a href={crumbs[0].href} class="hover:text-primary hover:underline">{crumbs[0].name}</a>
-    </li>
-
-    {crumbs.length > 2 && (
-      <li class="flex items-center gap-2">
-        <span class="opacity-50">/</span>
-        <span>...</span>
-      </li>
-    )}
-
-    {crumbs.length > 1 && (
-      <li class="flex items-center gap-2">
-        <span class="opacity-50">/</span>
-        <span class="font-semibold text-text/80 truncate max-w-[40vw]">
-          {crumbs[crumbs.length - 1].name}
-        </span>
-      </li>
-    )}
   </ol>
 </nav>
 
