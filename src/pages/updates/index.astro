@@ -4,6 +4,7 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Avatar from '../../components/Avatar.astro';
+import WhoBenefits from '../../components/WhoBenefits.astro';
 import { UPDATES, SITE, UPDATE_TYPE } from '../../config'; // Import UPDATE_TYPE
 import type { Update, UpdateType } from '../../config';
 
@@ -67,17 +68,7 @@ const categoryStyles: Record<UpdateType, string> = {
           ))}
         </div>
 
-        <div class="text-center mt-24">
-          <p class="text-text/70 mb-8">
-            Want to be notified about new releases and updates?
-          </p>
-          <div class="flex max-w-md mx-auto">
-            <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 bg-background/30 border border-white/20 rounded-l-lg text-text placeholder-text/50 focus:outline-none focus:border-primary" />
-            <button class="bg-primary text-background px-6 py-3 rounded-r-lg font-semibold hover:bg-opacity-90 transition-colors duration-200">
-              Subscribe
-            </button>
-          </div>
-        </div>
+        <WhoBenefits />
       </div>
     </section>
   </main>

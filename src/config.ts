@@ -148,7 +148,7 @@ export const UPDATES: Update[] = [
           '<strong>Updates:</strong> This section, where you are now, will be the official source for all future release notes and technical news.'
         ]},
         { type: 'paragraph', textHtml: 'The site is designed to be a comprehensive resource for current and future users. All feedback is welcome—you can reach me directly by clicking my avatar in the footer. Thank you for your support.' }
-      ],
+      ] as const,
     schema: {},
   },
   {
@@ -192,7 +192,7 @@ export const UPDATES: Update[] = [
     date: '2025-07-10',
     title: 'Technical Update: Chrome Compatibility Issue Resolved',
     titleHtml: 'Technical Update: <span class="text-primary">Chrome Compatibility Issue</span> Resolved',
-    issueStatus: 'Resolved',
+    issueStatus: 'Resolved' as const,
     summary: 'An explanation of the "AI features not supported" error and how it has been fixed in the v1.0.0 release.',
     content: [
       { type: 'paragraph', textHtml: 'Over the past week, some users running the latest versions of Chrome encountered an error message: "AI features are not supported in your browser." I want to be transparent about what happened and how it\'s been fixed.' },
