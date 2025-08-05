@@ -38,40 +38,40 @@ const breadcrumbSchema = {
     "item": crumb.href ? new URL(crumb.href, Astro.site).href : undefined
   }))
 };
-
-const showEllipsis = crumbs.length > 2;
 ---
 
 <nav aria-label="Breadcrumb" class="container mx-auto px-4 mt-8">
-  <ol class="flex items-center gap-2 text-xs md:text-sm text-text/60">
-    {crumbs.map((crumb, index) => {
-      const isFirst = index === 0;
-      const isLast = index === crumbs.length - 1;
-      const isMiddle = !isFirst && !isLast;
+  <ol class="hidden md:flex items-center gap-2 text-sm text-text/60">
+    {crumbs.map((crumb, index) => (
+      <li class="flex items-center gap-2">
+        {index > 0 && <span class="opacity-50">/</span>}
+        {crumb.href ? (
+          <a href={crumb.href} class="hover:text-primary hover:underline">{crumb.name}</a>
+        ) : (
+          <span class="font-semibold text-text/80">{crumb.name}</span>
+        )}
+      </li>
+    ))}
+  </ol>
 
-      return (
-        <li class:list={['flex items-center gap-2', { 'hidden md:flex': isMiddle }]}>
-          {!isFirst && <span class="opacity-50">/</span>}
-          {crumb.href && !isLast ? (
-            <a href={crumb.href} class="hover:text-primary hover:underline">{crumb.name}</a>
-          ) : (
-            <span class="font-semibold text-text/80 truncate max-w-[20ch] md:max-w-none">{crumb.name}</span>
-          )}
-        </li>
-      )
-    })}
+  <ol class="flex md:hidden items-center gap-2 text-xs text-text/60">
+    <li class="flex items-center gap-2">
+      <a href={crumbs[0].href} class="hover:text-primary hover:underline">{crumbs[0].name}</a>
+    </li>
 
-    {showEllipsis && (
-      <li class="flex md:hidden items-center gap-2">
+    {crumbs.length > 2 && (
+      <li class="flex items-center gap-2">
         <span class="opacity-50">/</span>
-        <span class="font-semibold text-text/80">...</span>
+        <span>...</span>
       </li>
     )}
-    
-    {showEllipsis && (
-      <li class="flex md:hidden items-center gap-2">
+
+    {crumbs.length > 1 && (
+      <li class="flex items-center gap-2">
         <span class="opacity-50">/</span>
-        <span class="font-semibold text-text/80 truncate max-w-[20ch] md:max-w-none">{crumbs[crumbs.length - 1].name}</span>
+        <span class="font-semibold text-text/80 truncate max-w-[40vw]">
+          {crumbs[crumbs.length - 1].name}
+        </span>
       </li>
     )}
   </ol>
