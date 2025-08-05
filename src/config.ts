@@ -1,3 +1,5 @@
+// src/config.ts
+
 export const UPDATE_TYPE = {
   ANNOUNCEMENT: 'Announcement',
   RELEASE: 'Release',
@@ -10,7 +12,7 @@ export const SITE = {
   name: '#TagChoose',
   title: "#TagChoose - The Smart Bookmark Manager",
   description: "The smart way to organize your digital life with an AI-powered bookmark manager. Ditch your folders and find your focus.",
-  logoUrl: '/logo.png',
+  logoUrl: '/logo.png', // Generic, root-relative path
   gwsLink: "https://chromewebstore.google.com/detail/tagchoose-bookmark-manage/hlfgdfpeekcelanebbfchnnneijhophh",
   author: {
     name: 'Saulius',
@@ -28,7 +30,7 @@ export const PAGES = {
     title: SITE.title,
     description: SITE.description,
     schema: {
-      "@context": "[https://schema.org](https://schema.org)",
+      "@context": "https://schema.org",
       "@type": "SoftwareApplication",
       "name": "TagChoose - The Smart Bookmark Manager",
       "applicationCategory": "BrowserExtension",
@@ -44,7 +46,7 @@ export const PAGES = {
         "name": "#TagChoose",
         "logo": {
           "@type": "ImageObject",
-          "url": new URL(SITE.logoUrl, import.meta.env.SITE).href
+          "url": `${import.meta.env.SITE}${import.meta.env.BASE_URL.replace(/\/$/, '')}${SITE.logoUrl}`
         }
       }
     }
@@ -54,7 +56,7 @@ export const PAGES = {
     title: 'Features - #TagChoose',
     description: 'Explore the powerful features of #TagChoose, the smart bookmark manager that uses local AI and a tag-based system to help you find anything.',
     schema: {
-      "@context": "[https://schema.org](https://schema.org)",
+      "@context": "https://schema.org",
       "@type": "WebPage",
       "name": "Features - #TagChoose",
       "description": "A detailed overview of the core features of the #TagChoose Chrome Extension.",
@@ -63,7 +65,7 @@ export const PAGES = {
         "name": "#TagChoose",
         "logo": {
           "@type": "ImageObject",
-          "url": new URL(SITE.logoUrl, import.meta.env.SITE).href
+          "url": `${import.meta.env.SITE}${import.meta.env.BASE_URL.replace(/\/$/, '')}${SITE.logoUrl}`
         }
       }
     }
@@ -73,7 +75,7 @@ export const PAGES = {
     title: 'The Manifesto - #TagChoose',
     description: 'My beliefs on information overload, privacy, and building a bookmark manager that works like your brain, not a filing cabinet.',
     schema: {
-      "@context": "[https://schema.org](https://schema.org)",
+      "@context": "https://schema.org",
       "@type": "WebPage",
       "name": "The Manifesto - #TagChoose",
       "description": "The story and guiding principles behind the creation of #TagChoose.",
@@ -82,7 +84,7 @@ export const PAGES = {
         "name": "#TagChoose",
         "logo": {
           "@type": "ImageObject",
-          "url": new URL(SITE.logoUrl, import.meta.env.SITE).href
+          "url": `${import.meta.env.SITE}${import.meta.env.BASE_URL.replace(/\/$/, '')}${SITE.logoUrl}`
         }
       }
     }
@@ -101,7 +103,7 @@ export const PAGES = {
         "name": "#TagChoose",
         "logo": {
           "@type": "ImageObject",
-          "url": new URL(SITE.logoUrl, import.meta.env.SITE).href
+          "url": `${import.meta.env.SITE}${import.meta.env.BASE_URL.replace(/\/$/, '')}${SITE.logoUrl}`
         }
       }
     }
@@ -133,7 +135,6 @@ export type TechnicalUpdate = BaseUpdate & { type: 'Technical'; issueStatus?: 'R
 
 export type Update = AnnouncementUpdate | ReleaseUpdate | TechnicalUpdate;
 
-
 // The UPDATES array using the content block system
 export const UPDATES: Update[] = [
   {
@@ -143,16 +144,16 @@ export const UPDATES: Update[] = [
     title: 'Announcing the New #TagChoose Promotional Website',
     titleHtml: 'Announcing the New <span class="text-primary">#TagChoose</span> Promotional Website',
     summary: 'The new, official promo website for #TagChoose is now live, featuring detailed information on features, the project\'s philosophy, and all future updates.',
-          content: [
-        { type: 'paragraph', textHtml: 'Today marks the launch of the new promotional website for #TagChoose. The goal of this site is to provide a clear and detailed overview of the extension\'s features and the philosophy behind its design.' },
-        { type: 'heading', level: 3, textHtml: 'Key Sections on the New Site' },
-        { type: 'list', items: [
-          '<strong><a href="/features" class="underline">Features:</a></strong> A detailed breakdown of all core functionalities, from AI-powered tag suggestions to the "Folders = Tags" paradigm.',
-          '<strong><a href="/manifesto" class="underline">Manifesto:</a></strong> The story behind why I built #TagChoose to solve "bookmark anxiety" and the privacy-first principles that guide its development.',
-          '<strong>Updates:</strong> This section, where you are now, will be the official source for all future release notes and technical news.'
-        ]},
-        { type: 'paragraph', textHtml: 'The site is designed to be a comprehensive resource for current and future users. All feedback is welcome—you can reach me directly by clicking my avatar in the footer. Thank you for your support.' }
-      ] as const,
+    content: [
+      { type: 'paragraph', textHtml: 'Today marks the launch of the new promotional website for #TagChoose. The goal of this site is to provide a clear and detailed overview of the extension\'s features and the philosophy behind its design.' },
+      { type: 'heading', level: 3, textHtml: 'Key Sections on the New Site' },
+      { type: 'list', items: [
+        '<strong><a href="/features" class="underline">Features:</a></strong> A detailed breakdown of all core functionalities, from AI-powered tag suggestions to the "Folders = Tags" paradigm.',
+        '<strong><a href="/manifesto" class="underline">Manifesto:</a></strong> The story behind why I built #TagChoose to solve "bookmark anxiety" and the privacy-first principles that guide its development.',
+        '<strong>Updates:</strong> This section, where you are now, will be the official source for all future release notes and technical news.'
+      ]},
+      { type: 'paragraph', textHtml: 'The site is designed to be a comprehensive resource for current and future users. All feedback is welcome—you can reach me directly by clicking my avatar in the footer. Thank you for your support.' }
+    ] as const,
     schema: {},
   },
   {
@@ -167,7 +168,7 @@ export const UPDATES: Update[] = [
       { type: 'paragraph', textHtml: "This new version represents a complete migration to Chrome's native AI LanguageModel API, resolving recent compatibility issues and dramatically improving performance. Existing users should receive the update automatically within the next 24-48 hours." },
       { type: 'callout', kind: 'info', textHtml: `You can get the latest version now from the <a href="${SITE.gwsLink}" target="_blank" rel="noopener noreferrer" class="font-bold underline">Chrome Web Store page</a>.`},
     ] as const,
-    schema: {}, // Will be auto-generated by the .map() below
+    schema: {},
   },
   {
     type: UPDATE_TYPE.RELEASE,
@@ -241,17 +242,27 @@ export const UPDATES: Update[] = [
     schema: {},
   },
 ].map(update => {
+  // Dynamically construct the absolute URL for the schema
+  const absoluteLogoUrl = `${import.meta.env.SITE}${import.meta.env.BASE_URL.replace(/\/$/, '')}${SITE.logoUrl}`;
+
   const baseSchema = {
     "@context": "https://schema.org",
     "headline": update.title,
     "datePublished": update.date,
     "dateModified": update.date,
     "author": { "@type": "Person", "name": SITE.author.name, "url": new URL('/manifesto', import.meta.env.SITE).href },
-    "publisher": { "@type": "Organization", "name": SITE.name, "logo": { "@type": "ImageObject", "url": new URL(SITE.logoUrl, import.meta.env.SITE).href } },
+    "publisher": {
+      "@type": "Organization",
+      "name": SITE.name,
+      "logo": {
+        "@type": "ImageObject",
+        "url": absoluteLogoUrl // Use the correctly constructed URL
+      }
+    },
     "description": update.summary,
   };
 
-  if (update.type === 'Release' || update.type === 'Technical') {
+  if (update.type === UPDATE_TYPE.RELEASE || update.type === UPDATE_TYPE.TECHNICAL) {
     update.schema = { ...baseSchema, "@type": "TechArticle" };
   } else {
     update.schema = { ...baseSchema, "@type": "BlogPosting" };
