@@ -8,4 +8,8 @@ export default defineConfig({
   site: 'https://tagchoose.site', 
   
   integrations: [tailwind()],
+
+  redirects: {
+    '/technical-details': '/updates'
+  }
 });
