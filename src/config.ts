@@ -12,7 +12,7 @@ export type UpdateType = typeof UPDATE_TYPE[keyof typeof UPDATE_TYPE];
 // For relative paths within the site
 const createPath = (path: string) => `${import.meta.env.BASE_URL}${path}`.replace(/\/+/g, '/');
 // For full, absolute URLs for SEO
-const absoluteUrl = (path: string) => new URL(path, import.meta.env.SITE).href;
+export const absoluteUrl = (path: string) => new URL(path, import.meta.env.SITE).href;
 
 export const SITE = {
   name: '#TagChoose',
