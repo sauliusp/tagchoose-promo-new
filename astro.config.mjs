@@ -2,15 +2,17 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 
+const base = process.env.ASTRO_BASE || '/';
+
 // https://astro.build/config
 export default defineConfig({
   site: process.env.ASTRO_SITE || 'http://localhost:4321',
-  base: process.env.ASTRO_BASE || '/',
+  base: base,
   integrations: [tailwind()],
   redirects: {
     '/technical-details': {
       status: 301,
-      destination: '/updates'
+      destination: `${base.replace(/\/$/, '')}/updates`
     }
   }
 });
