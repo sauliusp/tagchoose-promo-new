@@ -7,11 +7,14 @@ import { SITE, getMainNavigation } from '../config.ts';
 <header class="sticky top-0 bg-background border-b border-gray-800 z-50">
   <div class="container mx-auto px-4 py-4">
     <div class="flex items-center justify-between">
-      <!-- Logo -->
+      <!-- Logo (Desktop) / CTA Button (Mobile) -->
       <div class="flex items-center">
-        <a href={SITE.homeUrl} class="flex items-center hover:opacity-80 transition-opacity duration-200">
+        <a href={SITE.homeUrl} class="hidden md:flex items-center hover:opacity-80 transition-opacity duration-200">
           <img src={SITE.logoUrl} alt={`${SITE.name} Logo`} class="h-8 w-auto" />
         </a>
+        <div class="md:hidden">
+          <CTAButton />
+        </div>
       </div>
       
       <!-- Desktop Navigation -->
@@ -51,12 +54,7 @@ import { SITE, getMainNavigation } from '../config.ts';
     </div>
   </div>
   
-  <!-- Mobile CTA Button -->
-  <div class="md:hidden bg-background border-b border-gray-800 py-4">
-    <div class="container mx-auto px-4 flex justify-center">
-      <CTAButton />
-    </div>
-  </div>
+
 </header>
 
 <script>
