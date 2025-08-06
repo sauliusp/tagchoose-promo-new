@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "build:github": "ASTRO_SITE=https://tagchoose.site ASTRO_BASE=/",
+    "build:github": "ASTRO_SITE=https://tagchoose.site ASTRO_BASE=/ astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
