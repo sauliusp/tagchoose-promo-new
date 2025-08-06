@@ -6,7 +6,7 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Footer from '../../components/Footer.astro';
 import Avatar from '../../components/Avatar.astro';
 import WhoBenefits from '../../components/WhoBenefits.astro';
-import { UPDATES, SITE, UPDATE_TYPE } from '../../config'; // Import UPDATE_TYPE
+import { UPDATES, SITE, UPDATE_TYPE, createUpdateUrl } from '../../config'; // Import UPDATE_TYPE
 import type { Update, UpdateType } from '../../config';
 
 // Sort updates by date, newest first
@@ -41,7 +41,7 @@ const categoryStyles: Record<UpdateType, string> = {
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {sortedUpdates.map(update => (
-            <a href={`/updates/${update.slug}`} class="block">
+            <a href={createUpdateUrl(update.slug)} class="block">
               <article class="h-full bg-background/50 rounded-lg border border-white/10 overflow-hidden hover:border-primary transition-colors duration-200 flex flex-col">
                 <div class="p-6 flex-grow flex flex-col">
                   <div class="flex justify-between items-center mb-3">

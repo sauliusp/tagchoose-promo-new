@@ -2,15 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { PAGES } from '../config';
-
-// Create a list of pages we want to show, using data from the config file.
-// This makes the list easy to update in the future.
-const navLinks = [
-  { href: '/features', name: PAGES.features.name },
-  { href: '/manifesto', name: PAGES.manifesto.name },
-  { href: '/updates', name: PAGES.updates.name },
-];
+import { SITE, getMainNavigation } from '../config';
 ---
 
 <Layout 
@@ -32,19 +24,19 @@ const navLinks = [
       
     <div class="space-y-8">
       <a 
-        href="/" 
+        href={SITE.homeUrl} 
         class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-background bg-primary rounded-lg hover:bg-opacity-90 focus:ring-4 focus:ring-primary transition-all duration-200"
       >
         Go Back Home
       </a>
       
       <div class="flex flex-wrap justify-center items-center gap-4 md:gap-6 text-base">
-        {navLinks.map((link, index) => (
+        {getMainNavigation().map((page, index) => (
           <>
-            <a href={link.href} class="text-text/80 hover:text-primary transition-colors duration-200">
-              {link.name}
+            <a href={page.href} class="text-text/80 hover:text-primary transition-colors duration-200">
+              {page.name}
             </a>
-            {index < navLinks.length - 1 && <span class="text-text/40">•</span>}
+            {index < getMainNavigation().length - 1 && <span class="text-text/40">•</span>}
           </>
         ))}
       </div>

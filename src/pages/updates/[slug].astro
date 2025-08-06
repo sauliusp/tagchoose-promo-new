@@ -5,7 +5,7 @@ import Header from '../../components/Header.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Footer from '../../components/Footer.astro';
 import Avatar from '../../components/Avatar.astro';
-import { UPDATES, SITE } from '../../config';
+import { UPDATES, SITE, PAGES } from '../../config';
 import type { Update } from '../../config';
 
 // This function runs at build time to generate a page for each update
@@ -96,7 +96,7 @@ const statusStyles = {
       </div>
 
       <div class="text-center mt-16 pt-8 border-t border-white/10">
-        <a href="/updates" class="text-primary hover:underline">
+        <a href={PAGES.updates.href} class="text-primary hover:underline">
           &larr; Back to All Updates
         </a>
       </div>

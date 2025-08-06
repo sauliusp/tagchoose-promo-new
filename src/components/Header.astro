@@ -1,6 +1,6 @@
 ---
 import CTAButton from './CTAButton.astro';
-import { SITE } from '../config.ts';
+import { SITE, getMainNavigation } from '../config.ts';
 
 ---
 
@@ -9,16 +9,16 @@ import { SITE } from '../config.ts';
     <div class="flex items-center justify-between">
       <!-- Logo -->
       <div class="flex items-center">
-        <a href={import.meta.env.BASE_URL} class="flex items-center hover:opacity-80 transition-opacity duration-200">
+        <a href={SITE.homeUrl} class="flex items-center hover:opacity-80 transition-opacity duration-200">
           <img src={SITE.logoUrl} alt={`${SITE.name} Logo`} class="h-8 w-auto" />
         </a>
       </div>
       
       <!-- Desktop Navigation -->
      <nav class="hidden md:flex items-center space-x-8">
-  <a href="/features" class="text-text hover:text-primary transition-colors duration-200">Features</a>
-  <a href="/manifesto" class="text-text hover:text-primary transition-colors duration-200">Manifesto</a>
-  <a href="/updates" class="text-text hover:text-primary transition-colors duration-200">Updates</a>
+  {getMainNavigation().map(page => (
+    <a href={page.href} class="text-text hover:text-primary transition-colors duration-200">{page.name}</a>
+  ))}
 </nav>
       
       <!-- Desktop CTA Button -->
@@ -44,9 +44,9 @@ import { SITE } from '../config.ts';
       class="hidden md:hidden mt-4 pb-4 border-t border-gray-800"
     >
       <nav class="flex flex-col space-y-4 pt-4">
-        <a href="/features" class="text-text hover:text-primary transition-colors duration-200 py-2">Features</a>
-        <a href="/manifesto" class="text-text hover:text-primary transition-colors duration-200 py-2">Manifesto</a>
-        <a href="/updates" class="text-text hover:text-primary transition-colors duration-200 py-2">Updates</a>
+        {getMainNavigation().map(page => (
+          <a href={page.href} class="text-text hover:text-primary transition-colors duration-200 py-2">{page.name}</a>
+        ))}
       </nav>
     </div>
   </div>

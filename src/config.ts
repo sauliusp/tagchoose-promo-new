@@ -8,12 +8,19 @@ export const UPDATE_TYPE = {
 
 export type UpdateType = typeof UPDATE_TYPE[keyof typeof UPDATE_TYPE];
 
+// --- HELPERS for URL construction ---
+// For relative paths within the site
+const createPath = (path: string) => `${import.meta.env.BASE_URL}${path}`.replace(/\/+/g, '/');
+// For full, absolute URLs for SEO
+const absoluteUrl = (path: string) => new URL(path, import.meta.env.SITE).href;
+
 export const SITE = {
   name: '#TagChoose',
   title: "#TagChoose - The Smart Bookmark Manager",
   description: "The smart way to organize your digital life with an AI-powered bookmark manager. Ditch your folders and find your focus.",
-  logoUrl: '/logo.png',
-  faviconUrl: '/favicon.png',
+  logoUrl: createPath('/logo.png'),
+  faviconUrl: createPath('/favicon.png'),
+  homeUrl: createPath('/'),
   gwsLink: "https://chromewebstore.google.com/detail/tagchoose-bookmark-manage/hlfgdfpeekcelanebbfchnnneijhophh",
   author: {
     name: 'Saulius',
@@ -28,6 +35,7 @@ export const SITE = {
 export const PAGES = {
   index: {
     name: 'Home',
+    href: createPath('/'),
     title: SITE.title,
     description: SITE.description,
     schema: {
@@ -47,13 +55,14 @@ export const PAGES = {
         "name": "#TagChoose",
         "logo": {
           "@type": "ImageObject",
-          "url": `${import.meta.env.SITE}${import.meta.env.BASE_URL.replace(/\/$/, '')}${SITE.logoUrl}`
+          "url": absoluteUrl(SITE.logoUrl)
         }
       }
     }
   },
   features: {
     name: 'Features',
+    href: createPath('/features'),
     title: 'Features - #TagChoose',
     description: 'Explore the powerful features of #TagChoose, the smart bookmark manager that uses local AI and a tag-based system to help you find anything.',
     schema: {
@@ -61,18 +70,20 @@ export const PAGES = {
       "@type": "WebPage",
       "name": "Features - #TagChoose",
       "description": "A detailed overview of the core features of the #TagChoose Chrome Extension.",
+      "url": absoluteUrl('/features'),
       "publisher": {
         "@type": "Organization",
         "name": "#TagChoose",
         "logo": {
           "@type": "ImageObject",
-          "url": `${import.meta.env.SITE}${import.meta.env.BASE_URL.replace(/\/$/, '')}${SITE.logoUrl}`
+          "url": absoluteUrl(SITE.logoUrl)
         }
       }
     }
   },
   manifesto: {
     name: 'The Manifesto',
+    href: createPath('/manifesto'),
     title: 'The Manifesto - #TagChoose',
     description: 'My beliefs on information overload, privacy, and building a bookmark manager that works like your brain, not a filing cabinet.',
     schema: {
@@ -80,18 +91,20 @@ export const PAGES = {
       "@type": "WebPage",
       "name": "The Manifesto - #TagChoose",
       "description": "The story and guiding principles behind the creation of #TagChoose.",
+      "url": absoluteUrl('/manifesto'),
       "publisher": {
         "@type": "Organization",
         "name": "#TagChoose",
         "logo": {
           "@type": "ImageObject",
-          "url": `${import.meta.env.SITE}${import.meta.env.BASE_URL.replace(/\/$/, '')}${SITE.logoUrl}`
+          "url": absoluteUrl(SITE.logoUrl)
         }
       }
     }
   },
   updates: {
     name: 'Updates',
+    href: createPath('/updates'),
     title: 'Latest Updates - #TagChoose',
     description: 'The latest news, release notes, and technical updates for the #TagChoose smart bookmark manager.',
     schema: {
@@ -99,12 +112,13 @@ export const PAGES = {
       "@type": "WebPage",
       "name": "Latest Updates - #TagChoose",
       "description": "The latest news, release notes, and technical updates for the #TagChoose smart bookmark manager.",
+      "url": absoluteUrl('/updates'),
       "publisher": {
         "@type": "Organization",
         "name": "#TagChoose",
         "logo": {
           "@type": "ImageObject",
-          "url": `${import.meta.env.SITE}${import.meta.env.BASE_URL.replace(/\/$/, '')}${SITE.logoUrl}`
+          "url": absoluteUrl(SITE.logoUrl)
         }
       }
     }
@@ -243,21 +257,18 @@ export const UPDATES: Update[] = [
     schema: {},
   },
 ].map(update => {
-  // Dynamically construct the absolute URL for the schema
-  const absoluteLogoUrl = `${import.meta.env.SITE}${import.meta.env.BASE_URL.replace(/\/$/, '')}${SITE.logoUrl}`;
-
   const baseSchema = {
     "@context": "https://schema.org",
     "headline": update.title,
     "datePublished": update.date,
     "dateModified": update.date,
-    "author": { "@type": "Person", "name": SITE.author.name, "url": new URL('/manifesto', import.meta.env.SITE).href },
+    "author": { "@type": "Person", "name": SITE.author.name, "url": absoluteUrl('/manifesto') },
     "publisher": {
       "@type": "Organization",
       "name": SITE.name,
       "logo": {
         "@type": "ImageObject",
-        "url": absoluteLogoUrl // Use the correctly constructed URL
+        "url": absoluteUrl(SITE.logoUrl)
       }
     },
     "description": update.summary,
@@ -270,3 +281,12 @@ export const UPDATES: Update[] = [
   }
   return update;
 });
+
+// Helper function to get main navigation (excluding home page)
+export const getMainNavigation = () => {
+  const { index, ...mainPages } = PAGES;
+  return Object.values(mainPages);
+};
+
+// Helper function to create update URLs
+export const createUpdateUrl = (slug: string) => createPath(`/updates/${slug}`);
