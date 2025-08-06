@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "build:github-pages-project": "ASTRO_SITE=https://sauliusp.github.io ASTRO_BASE=/tagchoose-promo-new astro build",
+    "build:github": "ASTRO_SITE=https://tagchoose.site ASTRO_BASE=/",
     "preview": "astro preview",
     "astro": "astro"
   },
