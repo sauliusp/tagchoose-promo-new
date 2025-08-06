@@ -3,7 +3,9 @@
 import { SITE, PAGES, UPDATES, absoluteUrl } from '../config';
 
 const { url } = Astro;
-const pathSegments = url.pathname.split('/').filter(p => p);
+// Clean the pathname to handle trailing slashes and index.html
+const cleanPathname = url.pathname.replace(/\/index\.html$/, '').replace(/\/$/, '');
+const pathSegments = cleanPathname.split('/').filter(p => p);
 
 // Remove the base path segment if it exists (for GitHub Pages)
 const basePath = import.meta.env.BASE_URL.replace(/\/$/, '').replace(/^\//, '');
