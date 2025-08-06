@@ -1,9 +1,6 @@
 ---
 // src/pages/updates/index.astro
 import Layout from '../../layouts/Layout.astro';
-import Header from '../../components/Header.astro';
-import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import Footer from '../../components/Footer.astro';
 import Avatar from '../../components/Avatar.astro';
 import WhoBenefits from '../../components/WhoBenefits.astro';
 import { UPDATES, SITE, UPDATE_TYPE, createUpdateUrl } from '../../config'; // Import UPDATE_TYPE
@@ -24,11 +21,8 @@ const categoryStyles: Record<UpdateType, string> = {
   title="Latest Updates - #TagChoose"
   description="The latest news, release notes, and technical updates for the #TagChoose smart bookmark manager."
 >
-  <Header />
-  <Breadcrumbs />
-  
-  <main>
-    <section class="py-20 lg:py-32">
+  <div slot="content">
+    <section>
       <div class="content-container-wide">
         <div class="content-container-narrow mx-auto text-center mb-16">
           <h1 class="text-5xl lg:text-6xl font-bold mb-6 font-serif">
@@ -73,7 +67,5 @@ const categoryStyles: Record<UpdateType, string> = {
         <WhoBenefits />
       </div>
     </section>
-  </main>
-
-  <Footer />
+  </div>
 </Layout>

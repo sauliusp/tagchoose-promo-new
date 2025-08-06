@@ -1,7 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 import { SITE, getMainNavigation } from '../config';
 ---
 
@@ -9,9 +7,7 @@ import { SITE, getMainNavigation } from '../config';
   title="404: Page Not Found - #TagChoose"
   description="The page you're looking for doesn't exist. Return to the #TagChoose homepage to explore our smart bookmark manager."
 >
-  <Header />
-  
-  <main class="container mx-auto px-4 py-20 md:py-32 text-center">
+  <div slot="content" class="container mx-auto px-4 text-center">
     <div class="mb-12 md:mb-16">
       <h1 class="text-8xl md:text-9xl font-bold text-primary mb-6 md:mb-8">404</h1>
       <h2 class="text-3xl md:text-4xl font-serif font-bold text-text mb-6">
@@ -41,7 +37,5 @@ import { SITE, getMainNavigation } from '../config';
         ))}
       </div>
     </div>
-  </main>
-
-  <Footer />
+  </div>
 </Layout>

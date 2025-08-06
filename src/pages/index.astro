@@ -1,8 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { PAGES } from '../config';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 import CTAButton from '../components/CTAButton.astro';
 import WhoBenefits from '../components/WhoBenefits.astro';
 import { Image } from 'astro:assets';
@@ -10,8 +8,7 @@ import mainImage from '../assets/4.jpg';
 ---
 
 <Layout title={PAGES.index.title} description={PAGES.index.description} schema={PAGES.index.schema}>
-  <Header />
-  <main class="content-container-wide py-16 md:py-24 text-center">
+  <div slot="content" class="text-center">
 
     <section class="content-container-narrow mx-auto">
       <h1 class="text-4xl md:text-6xl font-serif font-bold text-text mb-4">
@@ -76,6 +73,5 @@ import mainImage from '../assets/4.jpg';
 
     <WhoBenefits />
 
-  </main>
-  <Footer />
+  </div>
 </Layout>

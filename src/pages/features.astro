@@ -1,9 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { PAGES } from '../config';
-import Header from '../components/Header.astro';
-import Breadcrumbs from '../components/Breadcrumbs.astro';
-import Footer from '../components/Footer.astro';
 import { Image } from 'astro:assets';
 
 // Import the feature images
@@ -13,9 +10,7 @@ import imagePhilosophy from '../assets/3.jpg'; // Brain works in tags
 ---
 
 <Layout title={PAGES.features.title} description={PAGES.features.description} schema={PAGES.features.schema}>
-  <Header />
-  <Breadcrumbs />
-  <main class="content-container-wide py-16 md:py-24">
+  <div slot="content">
     <div class="text-center content-container-narrow mx-auto">
       <h1 class="text-4xl md:text-6xl font-serif font-bold text-text mb-4">
          Every Feature, Designed for <span class="text-primary">Flow</span>
@@ -103,6 +98,5 @@ import imagePhilosophy from '../assets/3.jpg'; // Brain works in tags
       </div>
     </section>
 
-  </main>
-  <Footer />
+  </div>
 </Layout>
