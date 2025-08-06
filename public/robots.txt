@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tagchoose.site/sitemap-index.xml

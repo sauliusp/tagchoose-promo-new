@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
+import sitemap from '@astrojs/sitemap';
 
 const base = process.env.ASTRO_BASE || '/';
 
@@ -8,7 +9,7 @@ const base = process.env.ASTRO_BASE || '/';
 export default defineConfig({
   site: process.env.ASTRO_SITE || 'http://localhost:4321',
   base: base,
-  integrations: [tailwind()],
+  integrations: [tailwind(), sitemap()],
   redirects: {
     '/technical-details': {
       status: 301,

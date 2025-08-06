@@ -6,11 +6,12 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "build:github": "ASTRO_SITE=https://sauliusp.github.io ASTRO_BASE=/tagchoose-promo-new astro build",
+    "build:github-pages-project": "ASTRO_SITE=https://sauliusp.github.io ASTRO_BASE=/tagchoose-promo-new astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.4.2",
     "@astrojs/tailwind": "^6.0.2",
     "astro": "^5.2.5"
   }
