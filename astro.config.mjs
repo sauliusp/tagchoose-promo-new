@@ -4,12 +4,9 @@ import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://sauliusp.github.io', 
-
-  base: '/tagchoose-promo-new', 
-  
+  site: process.env.ASTRO_SITE || 'http://localhost:4321',
+  base: process.env.ASTRO_BASE || '/',
   integrations: [tailwind()],
-
   redirects: {
     '/technical-details': '/updates'
   }

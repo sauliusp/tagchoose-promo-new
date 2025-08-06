@@ -13,6 +13,12 @@ const {
   description = SITE.description,
   schema
 } = Astro.props;
+
+// Helper function to create proper URLs
+function createUrl(path: string): string {
+  const baseUrl = import.meta.env.BASE_URL || '/';
+  return `${baseUrl}${path}`.replace(/\/+/g, '/');
+}
 ---
 
 <!doctype html>
@@ -23,7 +29,7 @@ const {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href={`${import.meta.env.BASE_URL}/favicon.png`} />
+    <link rel="icon" type="image/png" href={createUrl('favicon.png')} />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
