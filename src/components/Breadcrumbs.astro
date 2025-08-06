@@ -5,10 +5,14 @@ import { SITE, PAGES, UPDATES, absoluteUrl } from '../config';
 const { url } = Astro;
 const pathSegments = url.pathname.split('/').filter(p => p);
 
+// Remove the base path segment if it exists (for GitHub Pages)
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '').replace(/^\//, '');
+const relevantSegments = basePath ? pathSegments.slice(1) : pathSegments;
+
 const crumbs: { name: string; href?: string }[] = [{ name: 'Home', href: SITE.homeUrl }];
 
-if (pathSegments.length > 0) {
-  switch (pathSegments[0]) {
+if (relevantSegments.length > 0) {
+  switch (relevantSegments[0]) {
     case 'features':
       crumbs.push({ name: PAGES.features.name, href: PAGES.features.href });
       break;
@@ -17,8 +21,8 @@ if (pathSegments.length > 0) {
       break;
     case 'updates':
       crumbs.push({ name: PAGES.updates.name, href: PAGES.updates.href });
-      if (pathSegments.length > 1) {
-        const update = UPDATES.find(u => u.slug === pathSegments[1]);
+      if (relevantSegments.length > 1) {
+        const update = UPDATES.find(u => u.slug === relevantSegments[1]);
         if (update) {
           crumbs.push({ name: update.title }); // Last crumb is not a link
         }
