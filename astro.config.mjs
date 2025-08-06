@@ -8,6 +8,9 @@ export default defineConfig({
   base: process.env.ASTRO_BASE || '/',
   integrations: [tailwind()],
   redirects: {
-    '/technical-details': '/updates'
+    '/technical-details': {
+      status: 301,
+      destination: '/updates'
+    }
   }
 });
