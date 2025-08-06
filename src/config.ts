@@ -12,7 +12,8 @@ export const SITE = {
   name: '#TagChoose',
   title: "#TagChoose - The Smart Bookmark Manager",
   description: "The smart way to organize your digital life with an AI-powered bookmark manager. Ditch your folders and find your focus.",
-  logoUrl: '/logo.png', // Generic, root-relative path
+  logoUrl: '/logo.png',
+  faviconUrl: '/favicon.png',
   gwsLink: "https://chromewebstore.google.com/detail/tagchoose-bookmark-manage/hlfgdfpeekcelanebbfchnnneijhophh",
   author: {
     name: 'Saulius',
