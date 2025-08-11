@@ -153,6 +153,52 @@ export type Update = AnnouncementUpdate | ReleaseUpdate | TechnicalUpdate;
 // The UPDATES array using the content block system
 export const UPDATES: Update[] = [
   {
+    type: UPDATE_TYPE.TECHNICAL,
+    slug: 'explaining-the-ai-not-available-message',
+    date: '2025-08-10',
+    title: 'Explaining the "AI features are not available" Message',
+    titleHtml: 'Explaining the <span class="text-primary">"AI features are not available"</span> Message',
+    issueStatus: 'Resolved' as const,
+    summary: 'A detailed guide for when you see "AI features are not available on this browser or device," exploring the specific system requirements from Google.',
+    content: [
+      { type: 'paragraph', textHtml: 'If you see the message <strong>"AI features are not available on this browser or device,"</strong> it means your system does not currently meet the specific requirements set by Google to run the on-device AI model. Since #TagChoose is 100% private, it relies entirely on your computer\'s capabilities to function.' },
+      { type: 'heading', level: 3, textHtml: 'A Checklist of Official Requirements' },
+      { type: 'paragraph', textHtml: 'This message appears when one or more of the following conditions are not met:' },
+      { type: 'list', items: [
+        '<strong>Operating System:</strong> Must be <strong>Windows 10+, macOS 13+ (Ventura or newer), or Linux</strong>. ChromeOS, Android, and iOS are not yet supported by the Gemini Nano APIs.',
+        '<strong>Chrome Version:</strong> Must be version 138 or higher. You can check yours at <code class="bg-white/10 p-1 rounded">chrome://settings/help</code>.',
+        '<strong>Storage:</strong> You need <strong>at least 22 GB of free space</strong> on the drive that contains your Chrome profile. This is to ensure there is enough room for the model and other browser resources.',
+        '<strong>GPU (Graphics Card):</strong> Your system must have <strong>strictly more than 4 GB of VRAM</strong> (video memory). Modern on-device AI relies heavily on the GPU for processing.'
+      ]},
+      { type: 'callout', kind: 'info', textHtml: 'These are official requirements from Google. For the most up-to-date information, you can always refer to the <a href="https://developer.chrome.com/docs/extensions/ai/prompt-api#system_requirements" target="_blank" rel="noopener noreferrer" class="font-bold underline">Official Chrome AI System Requirements</a>.' },
+      { type: 'paragraph', textHtml: 'In the meantime, the core functionality of #TagChoose remains active. You can still save any webpage and add tags manually by selecting from your existing folder list.' },
+    ] as const,
+    schema: {},
+},
+{
+    type: UPDATE_TYPE.TECHNICAL,
+    slug: 'understanding-initial-ai-model-download',
+    date: '2025-08-09',
+    title: 'Tech Deep-Dive: The One-Time AI Model Setup',
+    titleHtml: 'Tech Deep-Dive: The One-Time <span class="text-primary">AI Model Setup</span>',
+    issueStatus: 'Resolved' as const,
+    summary: 'An insightful look at the one-time, automatic download of the local AI model, why it\'s necessary for your privacy, and what affects its size.',
+    content: [
+      { type: 'paragraph', textHtml: 'When you first use #TagChoose, you may notice a short delay before AI-powered tag suggestions are available. This is a normal, one-time setup process performed by Google Chrome to download the local AI model (Gemini Nano) to your computer. This process is the key to how we keep your data 100% private.' },
+      { type: 'heading', level: 3, textHtml: 'The Download Process Explained' },
+      { type: 'paragraph', textHtml: 'To keep your Browse data private, #TagChoose uses an AI model that runs 100% locally on your machine. For this to work, Chrome must first download the model file. This is handled automatically by the browser and requires an <strong>unmetered network connection</strong>.' },
+      { type: 'list', items: [
+          'A <strong>metered connection</strong> is a data-limited internet connection, like a cellular hotspot. The download will pause on these networks.',
+          '<strong>Unmetered connections</strong>, like most Wi-Fi and ethernet, allow the download to proceed.',
+      ]},
+      { type: 'heading', level: 3, textHtml: 'About the Model Size' },
+      { type: 'paragraph', textHtml: 'While your system needs 22 GB of free space, the Gemini Nano model itself is significantly smaller. Its exact size can vary as Google pushes updates, but it is highly optimized for on-device use.'},
+      { type: 'callout', kind: 'info', textHtml: '<strong>For advanced users:</strong> You can see the exact size of the current model on your machine by visiting <code class="bg-white/10 p-1 rounded">chrome://on-device-internals</code> in your address bar and checking the "Model status" section.' },
+      { type: 'paragraph', textHtml: 'The AI features will be available as soon as this one-time download is complete. In the meantime, manual tagging will work perfectly. For a full technical overview, you can read the <a href="https://developer.chrome.com/docs/extensions/ai/prompt-api" target="_blank" rel="noopener noreferrer" class="font-bold underline">official Chrome Prompt API documentation</a>.' },
+    ] as const,
+    schema: {},
+},
+  {
     type: UPDATE_TYPE.ANNOUNCEMENT,
     slug: 'new-promo-website-launch',
     date: '2025-08-05',
