@@ -180,7 +180,7 @@ export const UPDATES: Update[] = [
     slug: 'understanding-initial-ai-model-download',
     date: '2025-08-09',
     title: 'The One-Time AI Model Setup',
-    titleHtml: 'Tech Deep-Dive: The One-Time <span class="text-primary">AI Model Setup</span>',
+    titleHtml: 'The One-Time <span class="text-primary">AI Model Setup</span>',
     issueStatus: 'Resolved' as const,
     summary: 'An insightful look at the one-time, automatic download of the local AI model, why it\'s necessary for your privacy, and what affects its size.',
     content: [
